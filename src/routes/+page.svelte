@@ -12,8 +12,8 @@
     <section class="entrance" class:on={on} class:off={!on}>
         <div class="section-1">
             <nav class="nav-left">
-                <a class="big-link" href="#">ABOUT</a>
-                <a class="big-link" href="#">SYNOPSIS</a>
+                <a class="big-link" href="#about">ABOUT</a>
+                <a class="big-link" href="#synopsis">SYNOPSIS</a>
             </nav>
         </div>
         <div class="section-2">
@@ -30,8 +30,8 @@
         </div>
         <div class="section-3">
             <nav class="nav-right">
-                <a class="big-link" href="#">TEAM</a>
-                <a class="big-link" href="#">EXTRAS</a>
+                <a class="big-link" href="#team">TEAM</a>
+                <a class="big-link" href="#extras">EXTRAS</a>
             </nav>
         </div>
     </section>
