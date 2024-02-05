@@ -1,0 +1,142 @@
+@font-face {
+    font-family: "Sixtyfour";
+    src: url("/fonts/Sixtyfour-Regular.ttf");
+}
+
+:root {
+    --bg-1: #1a1c4e;
+    --bg-2: black;
+    --bg-3: #0c2c17;
+    --bg-4: #b44e4b;
+    --fg-1: #dd1d97;
+    --fg-2: #f3ca1c;
+    --fg-3: #88149a;
+    --fg-4: #ef1f3b;
+    --fg-5: #72b8d3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+section.entrance {
+    transition: background-color 0.25s;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+section.production {
+    background-color: var(--bg-3);
+    color: white;
+    padding: 1rem;
+}
+
+section.stills {
+    background-color: var(--bg-4);
+    color: white;
+    padding: 1rem;
+}
+
+section.socials {
+    background-color: var(--bg-2);
+    color: white;
+}
+
+.still-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.still-list > img {
+    max-width: 9rem;
+}
+
+section.entrance div {
+    height: 100%;
+    width: 100%;
+}
+
+/* sidebars */
+section.entrance div:nth-child(1), section.entrance div:nth-child(3) {
+    flex: 1 1;
+}
+
+/* main section */
+section.entrance div:nth-child(2) {
+    flex: 2 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+section.entrance.off {
+    background-color: var(--bg-2);
+}
+
+section.entrance.on {
+    background-color: var(--bg-1);
+}
+
+img.monitor {
+    width: 36rem;
+    height: 36rem;
+}
+
+a.big-link {
+    font-size: 3rem;
+    color: white;
+    transition: color 0.25s;
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+.off a.big-link, .off h1, .off p {
+    color: black;
+}
+
+.on a.big-link, .on h1, .on p {
+    color: white;
+}
+
+nav.nav-left {
+    align-items: flex-end;
+}
+
+nav.nav-right {
+    align-items: flex-start;
+}
+
+map[name='monitor'] {
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.75rem;
+    font-family: "Sixtyfour";
+}
+
+header p {
+    font-size: 2rem;
+    font-style: italic;
+    opacity: 0.8;
+}
