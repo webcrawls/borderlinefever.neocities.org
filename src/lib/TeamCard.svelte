@@ -7,18 +7,26 @@
 
 <article>
     <img src="https://placehold.co/512x512" />
-    <h1>{name}</h1>
-    <p>{pronouns}</p>
+    <div class="name">
+        <h1>{name}</h1>
+        <p>{pronouns}</p>
+    </div>
     <p>{role}</p>
 </article>
 
 <style>
     article {
-        max-width: 9rem;
+        max-width: 12rem;
         width: 100%;
     }
 
     img {
         width: 100%;
+    }
+
+    .name {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
     }
 </style>

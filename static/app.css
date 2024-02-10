@@ -19,7 +19,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: monospace;
+    color: white;
+}
+
+body {
+    background-color: var(--bg-1);
+}
+
+html {
+    scroll-behavior: smooth
 }
 
 section.entrance {
@@ -30,19 +39,19 @@ section.entrance {
 }
 
 section.production {
-    background-color: var(--bg-3);
+    /*background-color: var(--bg-3);*/
     color: white;
     padding: 1rem;
 }
 
 section.stills {
-    background-color: var(--bg-4);
+    /*background-color: var(--bg-4);*/
     color: white;
     padding: 1rem;
 }
 
 section.socials {
-    background-color: var(--bg-2);
+    /*background-color: var(--bg-2);*/
     color: white;
 }
 
@@ -69,7 +78,7 @@ section.entrance div:nth-child(1), section.entrance div:nth-child(3) {
 
 /* main section */
 section.entrance div:nth-child(2) {
-    flex: 2 1;
+    flex: 2.5 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -78,11 +87,11 @@ section.entrance div:nth-child(2) {
 }
 
 section.entrance.off {
-    background-color: var(--bg-2);
+    /*background-color: var(--bg-2);*/
 }
 
 section.entrance.on {
-    background-color: var(--bg-1);
+    /*background-color: var(--bg-1);*/
 }
 
 img.monitor {
@@ -91,9 +100,10 @@ img.monitor {
 }
 
 a.big-link {
-    font-size: 3rem;
+    font-size: 2rem;
     color: white;
     transition: color 0.25s;
+    font-family: "Sixtyfour";
 }
 
 nav {
@@ -103,6 +113,7 @@ nav {
     justify-content: center;
     gap: 3rem;
 }
+
 .off a.big-link, .off h1, .off p {
     color: black;
 }
@@ -133,10 +144,19 @@ header {
 header h1 {
     font-size: 2.75rem;
     font-family: "Sixtyfour";
+    text-align: center;
 }
 
 header p {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-style: italic;
     opacity: 0.8;
+}
+
+footer > blockquote {
+    color: white;
+    opacity: 0.7;
+    font-style: italic;
+    max-width: 60ch;
+    font-size: 1.2rem;
 }
