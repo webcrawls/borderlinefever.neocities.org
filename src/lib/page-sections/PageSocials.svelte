@@ -12,7 +12,7 @@
             <a href="#">youtube music</a>
         </div>
         <div class="column">
-            <h3>ENGAGE WITH OUR CONTENT. NOW.</h3>
+            <h3>ENGAGE WITH OUR CONTENT.</h3>
             <a href="#">instagram</a>
             <a href="#">twitter</a>
             <a href="#">youtube</a>

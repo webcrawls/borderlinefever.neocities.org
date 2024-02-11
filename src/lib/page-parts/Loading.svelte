@@ -1,5 +1,6 @@
 <script lang="ts">
-    import {createEventDispatcher} from "svelte";
+    import {createEventDispatcher, getContext, onMount} from "svelte";
+    import {writable, type Writable} from "svelte/store";
 
     export const start: () => void = () => {
         started = true
@@ -15,6 +16,7 @@
         setTimeout(() => hideLoadingText = true, 500)
     }
 
+    const ready: Writable<boolean> = getContext("ready")
     const dispatch = createEventDispatcher()
 
     let started: boolean = false
@@ -52,6 +54,15 @@
         hint = hints[Math.floor(Math.random() * (hints.length))]
         setTimeout(updateHint, Math.random() * (minHintTime - maxHintTime) + minHintTime)
     }
+
+    onMount(() => {
+        if ($ready) {
+            loading = true
+            hideLoadingText = true
+            started = true
+            value = max
+        }
+    })
 </script>
 
 <div class="loading" class:hidden={!started}>

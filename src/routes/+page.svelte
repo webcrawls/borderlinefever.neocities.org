@@ -18,6 +18,7 @@
         <div class="loaded-content">
             <PageTeam/>
             <PageSocials/>
+            <p style="opacity: 0.7; font-style: italic">made with 💓 by <a href="https://github.com/webcrawls">webcrawls</a></p>
         </div>
     {/if}
 </main>
@@ -31,10 +32,11 @@
     }
 
     .loaded-content {
-        padding: 1rem;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 3rem;
     }
 
     :global(body) {

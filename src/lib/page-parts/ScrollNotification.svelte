@@ -39,3 +39,9 @@
     <p>{animation[currentFrame][0]}</p>
     <p>{animation[currentFrame][1]}</p>
 </div>
+
+<style>
+    p {
+        font-size: 1.75rem;
+    }
+</style>

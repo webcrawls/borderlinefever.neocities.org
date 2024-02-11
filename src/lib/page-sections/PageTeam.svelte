@@ -19,7 +19,6 @@
     #team {
         max-width: 120ch;
         width: 100%;
-        padding-block: 3rem;
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
