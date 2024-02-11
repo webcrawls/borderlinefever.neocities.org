@@ -21,6 +21,14 @@
         loaded = true
         $ready = true
     }
+
+    onMount(() => {
+        // hack to autoplay the video if
+        // we're initializing the component when $ready is already true
+        if ($ready) {
+            playing = true
+        }
+    })
 </script>
 
 <video bind:this={video} class="bg-video" class:playing class:not-playing={!playing} autoplay muted loop onloadstart="">
@@ -35,7 +43,7 @@
 
     <section class="tv-section">
         <div class="tv-left">
-            {#if loaded}
+            {#if $ready}
                 <a transition:fade={{duration: 150}} href="#film" class="link">VIEW THE FILM</a>
                 <a transition:fade={{duration: 150}} href="#team" class="link">MEET THE TEAM</a>
             {/if}
@@ -46,14 +54,14 @@
             </div>
         </div>
         <div class="tv-right">
-            {#if loaded}
+            {#if $ready}
                 <a transition:fade={{duration: 150}} href="#" class="link">SOMETHING ELSE</a>
                 <a transition:fade={{duration: 150}} href="#socials" class="link">BLF ON THE 'NET</a>
             {/if}
         </div>
     </section>
     <section class="mobile-link-group">
-        {#if loaded}
+        {#if $ready}
             <a transition:fade={{duration: 150}} href="#film" class="link">VIEW THE FILM</a>
             <a transition:fade={{duration: 150}} href="#team" class="link">MEET THE TEAM</a>
             <a transition:fade={{duration: 150}} href="#" class="link">SOMETHING ELSE</a>
@@ -66,7 +74,7 @@
         {/if}
     </section>
     <Loading bind:this={loader} on:done={handleDone}/>
-    {#if loaded}
+    {#if $ready}
         <ScrollNotification/>
     {/if}
 </div>

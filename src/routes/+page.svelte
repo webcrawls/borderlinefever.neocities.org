@@ -4,8 +4,11 @@
     import {writable, type Writable} from "svelte/store";
     import {setContext} from "svelte";
     import PageSocials from "$lib/page-sections/PageSocials.svelte";
+    import {page} from "$app/stores";
 
-    const ready: Writable<boolean> = writable(false)
+    const hasAnchor: boolean = $page.url.hash !== ""
+    const ready: Writable<boolean> = writable(hasAnchor)
+
     setContext("ready", ready)
 </script>
 
