@@ -87,41 +87,10 @@
         opacity: 0;
     }
 
-    .loaded-button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        border: 1px solid white;
-        border-radius: 2px;
-        opacity: 0;
-        pointer-events: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .loaded-button button {
-        background-color: unset;
-        border: none;
-        color: white;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
-    
-    .loaded-button.visible {
-        opacity: 1;
-        pointer-events: all;
-    }
-
     .loading-loaded {
         background-image: url("/interference-pattern.png");
-        background-attachment: fixed;
-        background-size: contain;
+        background-attachment: local;
+        background-size: cover;
         background-repeat: repeat;
         background-position: center center;
         -webkit-text-fill-color: transparent;

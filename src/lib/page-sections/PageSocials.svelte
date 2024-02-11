@@ -2,7 +2,7 @@
     import TeamCard from "$lib/TeamCard.svelte";
 </script>
 
-<article id="team">
+<article id="socials">
     <h2>SOCIALS</h2>
     <div class="socials-list">
         <div class="column">
@@ -12,7 +12,7 @@
             <a href="#">youtube music</a>
         </div>
         <div class="column">
-            <h3>LIKE OUR POSTS. NOW.</h3>
+            <h3>ENGAGE WITH OUR CONTENT. NOW.</h3>
             <a href="#">instagram</a>
             <a href="#">twitter</a>
             <a href="#">youtube</a>
@@ -22,10 +22,9 @@
 </article>
 
 <style>
-    #team {
+    #socials {
         max-width: 120ch;
         width: 100%;
-        padding-block: 3rem;
         display: flex;
         flex-direction: column;
         gap: 0.75rem;

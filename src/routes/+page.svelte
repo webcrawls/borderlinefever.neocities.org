@@ -9,7 +9,7 @@
     setContext("ready", ready)
 </script>
 
-<div>
+<main>
     <PageMain/>
     {#if $ready}
         <div class="loaded-content">
@@ -17,9 +17,16 @@
             <PageSocials/>
         </div>
     {/if}
-</div>
+</main>
 
 <style>
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .loaded-content {
         padding: 1rem;
         display: flex;

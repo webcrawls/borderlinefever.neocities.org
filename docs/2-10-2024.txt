@@ -1,0 +1,8 @@
+questions
+* should team links have descriptions?
+* should team links have links to each person's socials?
+* really unsure about the background video animation. feels cool but it also feels like it could be improved or changed, but idk what.
+  * should the video only scroll on the first "screen"? i.e. should the video stay where it is on the page, or always follow the screen like it does now.
+* how do we improve the loading bar.
+* do we want analytics (past a single "page visit" count)
+  * OMG, PAGE VISIT COUNTER _oN_ THE WEBSITE??!
