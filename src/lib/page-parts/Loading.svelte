@@ -16,6 +16,8 @@
         setTimeout(() => hideLoadingText = true, 500)
     }
 
+    export let progress: number = 0.0
+
     const ready: Writable<boolean> = getContext("ready")
     const dispatch = createEventDispatcher()
 
@@ -31,10 +33,12 @@
     const minHintTime: number = 1000
     const maxHintTime: number = 1250
 
-    const hints = ["jumping down the hole...",
+    const hints = [
+        "jumping down the hole...",
         "rewinding the VHS...",
         "making new friends...",
-        null]
+        null
+    ]
 
     let hint: string | null = null
 
@@ -44,6 +48,9 @@
             return;
         }
         value += 1
+
+        progress = value / max
+
         setTimeout(tick, Math.random() * (maxWait - minWait) + minWait)
     }
 
@@ -66,12 +73,12 @@
 </script>
 
 <div class="loading" class:hidden={!started}>
-    <p class="loading-text" class:hidden={hideLoadingText}>{loading ? 'loading...' : 'loaded!'}</p>
+    <p class="loading-text">{hideLoadingText ? '\xa0' : loading ? 'loading...' : 'loaded!'}</p>
     <p class="loading-bar">
         <span class="loading-loaded" style="opacity: 1">{'▋'.repeat(value)}</span>
         <span class="loading-unloaded" style="opacity: 0.4">{'▋'.repeat(Math.max(0, max - value))}</span>
     </p>
-    <p class="loading-hint">{hint ?? ' '}</p>
+    <p class="loading-hint">{hint ?? '\xa0'}</p>
 </div>
 
 <style>
