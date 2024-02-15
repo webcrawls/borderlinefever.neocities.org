@@ -16,10 +16,10 @@ questions
 
 
 TYLER NOTES (LMFAO)
-* throw in the logo in
-    * fade
-* as the loading bar progresses, slowly fade logo from black -> coloured
-* center tv VERTICALLY
+* throw in the logo in ✅
+    * fade ✅
+* as the loading bar progresses, slowly fade logo from black -> coloured ✅
+* center tv VERTICALLY ✅
 * when the loading bar is done, THEN we play video
 
 do
