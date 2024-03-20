@@ -17,23 +17,21 @@
     setContext("loadingProgress", loadingProgress)
 </script>
 
-<BackgroundVideo playing="{$playing}"/>
-
-<main>
-    <PageMain/>
-    {#if $ready}
-        <div class="loaded-content">
-            <blockquote id="logline"><b>Two brothers decide to explore an old warehouse out of curiosity of what lies inside.</b>
-                They venture through a hole in the floor into the basement where they find themselves in over their
-                heads in a surreal environment, with familiar faces lurking
-            </blockquote>
-            <PageTeam/>
-            <PageSocials/>
-            <p style="opacity: 0.7; font-style: italic">made with 💓 by <a
-                    href="https://github.com/webcrawls">webcrawls</a></p>
-        </div>
-    {/if}
-</main>
+<!--<main>-->
+<!--    <PageMain/>-->
+<!--    {#if $ready}-->
+<!--        <div class="loaded-content">-->
+<!--            <blockquote id="logline"><b>Two brothers decide to explore an old warehouse out of curiosity of what lies inside.</b>-->
+<!--                They venture through a hole in the floor into the basement where they find themselves in over their-->
+<!--                heads in a surreal environment, with familiar faces lurking-->
+<!--            </blockquote>-->
+<!--&lt;!&ndash;            <PageTeam/>&ndash;&gt;-->
+<!--            <PageSocials/>-->
+<!--            <p style="opacity: 0.7; font-style: italic">made with 💓 by <a-->
+<!--                    href="https://webcrawls.live">webcrawls</a></p>-->
+<!--        </div>-->
+<!--    {/if}-->
+<!--</main>-->
 
 <style>
     main {

@@ -1,140 +1,94 @@
 <script lang="ts">
-    import {createEventDispatcher, getContext, onMount} from "svelte";
-    import {writable, type Writable} from "svelte/store";
-
-    export const start: () => void = () => {
-        started = true
-        loading = true
-        updateHint()
-        tick()
-    }
-
-    export const end: () => void = () => {
-        dispatch("done");
-        loading = false
-        hint = null
-        setTimeout(() => hideLoadingText = true, 500)
-    }
-
     export let progress: number = 0.0
-
-    const ready: Writable<boolean> = getContext("ready")
-    const dispatch = createEventDispatcher()
-
-    let started: boolean = false
-    let loading: boolean = false
-    let max: number = 28
-    let value: number = 0
-    let hideLoadingText: boolean = false
-
-    const minWait: number = 25
-    const maxWait: number = 250
-
-    const minHintTime: number = 1000
-    const maxHintTime: number = 1250
-
-    const hints = [
-        "jumping down the hole...",
-        "rewinding the VHS...",
-        "making new friends...",
-        null
-    ]
-
-    let hint: string | null = null
-
-    const tick = () => {
-        if (value >= max) {
-            end()
-            return;
-        }
-        value += 1
-
-        progress = value / max
-
-        setTimeout(tick, Math.random() * (maxWait - minWait) + minWait)
-    }
-
-    const updateHint = () => {
-        if (!loading) {
-            return;
-        }
-        hint = hints[Math.floor(Math.random() * (hints.length))]
-        setTimeout(updateHint, Math.random() * (minHintTime - maxHintTime) + minHintTime)
-    }
-
-    onMount(() => {
-        if ($ready) {
-            loading = true
-            hideLoadingText = true
-            started = true
-            value = max
-        }
-    })
+    export let loaded: boolean = false
 </script>
 
-<div class="loading" class:hidden={!started}>
-    <p class="loading-text">{hideLoadingText ? '\xa0' : loading ? 'loading...' : 'loaded!'}</p>
-    <p class="loading-bar">
-        <span class="loading-loaded" style="opacity: 1">{'▋'.repeat(value)}</span>
-        <span class="loading-unloaded" style="opacity: 0.4">{'▋'.repeat(Math.max(0, max - value))}</span>
-    </p>
-    <p class="loading-hint">{hint ?? '\xa0'}</p>
+<div class="loading" aria-hidden="true"
+     class:done={loaded}>
+    <div class="loading-background">
+        <p>Awaiting input...</p>
+    </div>
+    <div class="loading-foreground" style="--foreground-width: {Math.round(progress * 100)}%"></div>
 </div>
 
 <style>
     .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
         pointer-events: none;
         font-family: monospace;
-        opacity: 1;
-        transition: opacity 0.25s ease-in-out;
+
         color: white;
 
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        position: relative;
-    }
-
-    .loading-text {
         opacity: 1;
-        transition: opacity 0.25s ease-in-out;
+        transition: opacity 0.5s;
     }
 
-    .loading-text.hidden {
+    .loading.done {
         opacity: 0;
     }
 
-    .loading-loaded {
-        background-image: url("/interference-pattern.png");
-        background-attachment: local;
-        background-size: cover;
+    .loading-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+
+        background-color: #000000;
+        color: white;
+        font-size: 20px;
+        border: 1px solid white;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loading-background p {
+        opacity: 0.7;
+    }
+
+    .loading-foreground {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--foreground-width);
+        height: 100%;
+
+        background-size: 100vw;
         background-repeat: repeat;
         background-position: center center;
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
+        background-image: url("/interference-pattern.png");
+        background-attachment: local;
 
-        animation-name: animated-background;
-        animation-duration: 100s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+        /*animation-duration: 100s;*/
+        /*animation-timing-function: linear;*/
+        /*animation-iteration-count: infinite;*/
+
+        opacity: 1;
+        transition: opacity 0.35s ease-in-out;
     }
 
-    .loading-bar {
-        font-weight: bold;
-        font-size: 1.15rem;
-    }
+    /*.loading-foreground.animate {*/
+    /*    animation-name: animated-background;*/
+    /*}*/
 
-    .loading.hidden {
-        opacity: 0;
-    }
-
-    @keyframes animated-background {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-200%);
-        }
-    }
+    /*@keyframes animated-background {*/
+    /*    from {*/
+    /*        background-position-x: 0;*/
+    /*    }*/
+    /*    to {*/
+    /*        background-position-x: -200%;*/
+    /*    }*/
+    /*}*/
 </style>

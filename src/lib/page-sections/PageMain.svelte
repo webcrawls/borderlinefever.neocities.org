@@ -9,6 +9,7 @@
     const loadingProgress: Writable<number> = getContext("loadingProgress")
 
     let loadingElement: Loading = undefined
+    let easterEgg: boolean = false
 
     const handleTVClick = () => {
         if (loadingElement.started) {
@@ -17,13 +18,10 @@
 
         loadingElement.start()
     }
+
 </script>
 
 <div class="page-part">
-    <div class="link-group-left" class:hidden={!$ready}>
-        <a href="#team">MEET THE TEAM</a>
-        <a href="#film">SEE THE FILM</a>
-    </div>
     <div class="logo">
         <img alt="interference pattern logo, grayscale" class="grayscale" src="/logo/logo-colour.webp"
              style="--transition: {$loadingProgress}"/>
@@ -31,13 +29,12 @@
              style="--transition: {1.0 - $loadingProgress}"/>
     </div>
     <div class="tv-group">
-        <img on:click={handleTVClick} class="tv-image" src="/monitor.png"/>
-        <Loading bind:progress={$loadingProgress} bind:this={loadingElement}
-                 on:done={() => { $ready = true; $playing = true;}}/>
-    </div>
-    <div class="link-group-right" class:hidden={!$ready}>
-        <a href="#kickstart">KICKSTART US</a>
-        <a href="#blf">BLF ON THE NET</a>
+        {#if easterEgg}
+            <img class="tv-background" src="/tv/!!!-cropped.gif"/>
+            <img on:click={handleTVClick} class="tv-image" src="/tv/tv_frame.png"/>
+        {:else}
+            <img on:click={handleTVClick} class="tv-image" src="/tv/tv_full.png"/>
+        {/if}
     </div>
 </div>
 
@@ -47,8 +44,9 @@
         width: 100vw;
 
         display: grid;
-        grid-template-columns: 1fr 45vw 1fr;
+        grid-template-columns: 40vw 45vw 1fr;
         grid-template-rows: 1fr 1fr;
+        padding: 1rem;
         color: white;
     }
 
@@ -65,39 +63,12 @@
     .logo > .colour, .logo > .grayscale {
         width: 100%;
         height: 100%;
+        min-height: 30rem;
         position: absolute;
         top: 0;
         left: 0;
         object-fit: contain;
         opacity: var(--transition);
-    }
-
-    .link-group-left, .link-group-right {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .link-group-left.hidden, .link-group-right.hidden {
-        opacity: 0;
-    }
-
-    .link-group-left {
-        grid-column: 1;
-        grid-row: 2;
-        align-items: flex-end;
-        height: 100%;
-    }
-
-    .link-group-right {
-        grid-column: 3;
-        grid-row: 2;
-        align-items: flex-start;
-        height: 100%;
     }
 
     .tv-group {
@@ -106,17 +77,27 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1rem;
         gap: 1rem;
+
+        position: relative;
     }
 
-    .tv-group > .tv-image {
+    .tv-group .tv-image {
         object-fit: contain;
         max-width: 30rem;
         width: 100%;
         height: 100%;
         cursor: pointer;
+        filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
     }
+
+    .tv-background {
+        position: absolute;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+
 
     @media screen and (max-width: 768px) {
         .page-part {
