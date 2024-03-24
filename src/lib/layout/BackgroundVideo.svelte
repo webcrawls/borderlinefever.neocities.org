@@ -12,7 +12,12 @@
     }
 </script>
 
-<video bind:this={video} class="bg-video" class:playing class:not-playing={!playing} autoplay muted loop onloadstart="">
+<video bind:this={video}
+       class="bg-video"
+       class:playing
+       class:not-playing={!playing}
+       autoplay muted loop onloadstart=""
+       aria-hidden="true">
     <source src="/junkyard-effects.mp4" type="video/mp4"/>
 </video>
 

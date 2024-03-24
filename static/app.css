@@ -36,3 +36,15 @@ body {
 html {
     scroll-behavior: smooth
 }
+
+* {
+    --debug-border: none;
+}
+
+.debug, .debug * {
+    /*border: var(--debug-border);*/
+}
+
+.no-debug, .no-debug * {
+    --debug-border: none !important;
+}

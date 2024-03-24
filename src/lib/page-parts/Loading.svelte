@@ -1,15 +1,34 @@
 <script lang="ts">
+    import {getContext} from "svelte";
+    import type {Writable} from "svelte/store";
+
     export let progress: number = 0.0
     export let loaded: boolean = false
+
+    const js: Writable<boolean> = getContext("js")
+
+    let loadedSegments = 0
+    const segments = 30
+
+    $: loadedSegments = progress === 0.0 ? 0 : loaded ? 0 : Math.floor(segments * progress) + 1
+    $: console.log({loadedSegments, progress, loaded})
 </script>
 
-<div class="loading" aria-hidden="true"
-     class:done={loaded}>
-    <div class="loading-background">
-        <p>Awaiting input...</p>
+<section class="loading {(($js === false) && loaded || progress === 1.0) ? '' : 'is-hidden'}"
+         aria-hidden="true"
+         class:is-hidden={($js === false) && loaded || progress === 1.0}>
+    <header>
+        <h2 class:ellipses={progress !== 0.0 || progress !== 1.0}>Loading</h2>
+        <button>x</button>
+    </header>
+    <div class="loading-container">
+        <div class="loading-bar">
+            {#each {length: segments} as _, idx}
+                <div class="loading-segment" class:is-loaded={loaded || (idx < loadedSegments)}></div>
+            {/each}
+        </div>
     </div>
-    <div class="loading-foreground" style="--foreground-width: {Math.round(progress * 100)}%"></div>
-</div>
+</section>
 
 <style>
     .loading {
@@ -26,69 +45,90 @@
 
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         opacity: 1;
-        transition: opacity 0.5s;
+        transition: opacity 0.1s;
+
+        background-color: black;
+        border: 2px solid white;
     }
 
-    .loading.done {
+    .is-hidden {
         opacity: 0;
     }
 
-    .loading-background {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .loading header {
+        width: 100%;
+        background-image: linear-gradient(to right, #00006c, #24b3e5);
+        padding-inline: 0.5rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .loading header .ellipses::after {
+        display: inline-block;
+        animation: dotty steps(1, end) 1s infinite;
+        content: '';
+    }
+
+    @keyframes dotty {
+        0% {
+            content: '';
+        }
+        25% {
+            content: '.';
+        }
+        50% {
+            content: '..';
+        }
+        75% {
+            content: '...';
+        }
+        100% {
+            content: '';
+        }
+    }
+
+    .loading button {
+        width: 16px;
+        height: 16px;
+        border: 2px outset #d0d0d0;
+        background-color: #bbbbbb;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loading-container {
         width: 100%;
         height: 100%;
-        content: "";
-
-        background-color: #000000;
-        color: white;
-        font-size: 20px;
-        border: 1px solid white;
-
+        padding: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .loading-background p {
-        opacity: 0.7;
+    .loading-bar {
+        display: flex;
+        flex-direction: row;
+        margin-block: auto;
+        gap: 0.5rem;
+        height: 2.5rem;
+        width: 100%;
     }
 
-    .loading-foreground {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: var(--foreground-width);
+    .loading-segment {
         height: 100%;
-
-        background-size: 100vw;
-        background-repeat: repeat;
-        background-position: center center;
-        background-image: url("/interference-pattern.png");
-        background-attachment: local;
-
-        /*animation-duration: 100s;*/
-        /*animation-timing-function: linear;*/
-        /*animation-iteration-count: infinite;*/
-
-        opacity: 1;
-        transition: opacity 0.35s ease-in-out;
+        width: 100%;
+        flex: 1 1;
+        display: block;
+        border: 2px solid white;
     }
 
-    /*.loading-foreground.animate {*/
-    /*    animation-name: animated-background;*/
-    /*}*/
-
-    /*@keyframes animated-background {*/
-    /*    from {*/
-    /*        background-position-x: 0;*/
-    /*    }*/
-    /*    to {*/
-    /*        background-position-x: -200%;*/
-    /*    }*/
-    /*}*/
+    .loading-segment.is-loaded {
+        background-color: white;
+    }
 </style>
