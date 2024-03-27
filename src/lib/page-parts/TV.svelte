@@ -4,8 +4,8 @@
 
 <div class="image-wrapper" on:click>
     <div class="image-inner">
-        <img id="main-image" src="/tv/tv_pixelated_frame2.png"/>
-        <img style="opacity: {1.0 - progress}" id="tv-logo" src="/logo/logo-grayscale.png"/>
+        <img id="main-image" src="/PATTERN-TV.png"/>
+        <img style="opacity: {1.0 - progress}" id="tv-logo" src="/BLFLOGO.png"/>
         <img style="opacity: {progress}" id="tv-logo" src="/logo/logo-colour.png"/>
     </div>
 </div>
