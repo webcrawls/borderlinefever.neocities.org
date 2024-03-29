@@ -1,113 +1,96 @@
-<script lang="ts" context="module">
-    export interface LoadingState {
-        /**
-         * The progress of the loading bar. 0.0 means no loading, 1.0 means fully loaded.
-         * Impacts the rendering of page content.
-         */
-        progress: number,
-
-        /**
-         * A truthy variable determining whether the page is considered 'loaded'. This should switch to true when
-         * <code>progress</code> is equal to <code>1.0</code>.
-         *
-         * This value should change automatically via a reactive statement.
-         */
-        loaded: boolean
-    }
-</script>
-
 <script lang="ts">
-    import {writable, type Writable} from "svelte/store";
-    import {page} from "$app/stores";
     import BackgroundVideo from "$lib/layout/BackgroundVideo.svelte";
-    import Footer from "$lib/layout/Footer.svelte";
-    import Header from "$lib/layout/Header.svelte";
-    import {browser} from "$app/environment";
-    import {onMount, setContext} from "svelte";
+    import {page} from "$app/stores"
 
-    const defaultLoaded = !($page.url.pathname === '/' || $page.url.hash !== '')
-    const defaultProgress = defaultLoaded ? 1.0 : 0.0
-
-    const loading: Writable<LoadingState> = writable({progress: defaultProgress, loaded: defaultLoaded})
-    $: $loading.loaded = $loading.progress >= 1.0
-
-    let compressed: boolean = false
-    $: compressed = $loading.loaded && !($page.url.pathname === '/' || $page.url.hash !== '')
-
-
-    const js = writable(false)
-    setContext("js", js)
-
-    const loadTick = () => {
-        $loading.progress = $loading.progress + nextProgress()
-
-        if ($loading.progress >= 1.0) {
-            $loading.progress = 1.0
-            setTimeout(() => $loading.loaded = true, 1000)
-            return
-        }
-
-        setTimeout(() => requestAnimationFrame(loadTick), 1)
-    }
-
-    const nextProgress = (max = 0.01, min = 0.0001) => Math.random() * (max - min) + min
-
-    onMount(() => {
-        if (!browser) return;
-        $js = true
-    })
+    let playing: boolean = false
+    $: playing = $page.url.pathname !== '/'
 </script>
 
-<div id="app" class:compressed={compressed}
-              class:loaded={$loading.loaded}>
-    <BackgroundVideo playing="{$loading.loaded}"/>
-
-    <Header progress="{$loading.progress}"
-            loaded="{compressed}"
-            on:interact={() => loadTick()}/>
-
+<div id="app">
     <main>
-        <slot/>
+        <img aria-hidden="true" src="/PATTERN-TV.png" class="tv-background"/>
+        <nav class="tv-nav">
+            <a href="/about">About</a>
+            <a href="/team">Team</a>
+            <a href="/stills">Stills</a>
+        </nav>
+        <section>
+            <BackgroundVideo {playing}/>
+            <div class="content-wrapper">
+                <slot/>
+            </div>
+        </section>
     </main>
-
-    <Footer/>
 </div>
 
 <style>
-    /* Ensure body width/height is, at minimum, the size of the screen. */
-    /* Use CSS grid to position rows. */
     :global(#app) {
-        min-width: 100svw;
+        width: 100svw;
         height: 100svh;
-        width: 100%;
         /*height: 100%;*/
-        display: grid;
-        grid-template-rows: 100svh min-content min-content;
-        transition: height 0.3s, grid-template-rows 0.3s;
         overflow: hidden;
+        position: absolute;
     }
 
-    :global(#app.loaded) {
-        overflow-y: scroll;
+    main {
+        max-width: 160ch;
+        padding: 1%;
+        height: fit-content;
+        max-height: 100svh;
+        margin: auto;
+        aspect-ratio: 1 / 1;
+        position: relative;
     }
 
-    :global(#app.compressed) {
-        grid-template-rows: min-content min-content min-content;
+    section {
+        position: absolute;
+        top: 11%;
+        left: 13%;
+        width: 77%;
+        height: 56%;
+        overflow: hidden;
+        padding: 2rem;
     }
 
-    /* Apply a max-width and centered margin to non-header and non-video elements. */
-    :global(#app > :not(header, video)) {
-        max-width: 80ch;
-        margin-inline: auto;
+    section .content-wrapper {
     }
 
-    :global(main) {
-        width: 100%;
-        height: 100%;
-
-        padding: 1rem;
+    main .tv-nav {
+        position: absolute;
+        /*background-color: white;*/
+        width: 52%;
+        height: 7%;
+        top: 87%;
+        left: 25%;
 
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        /*background-size: cover;*/
+    }
+
+    main .tv-nav a {
+        color: white;
+        font-family: "Daydream";
+        background-image: url("/PATTERN-TV-buttons.png");
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    main .tv-nav a:hover {
+        filter: invert(100%);
+    }
+
+    .tv-background {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 1;
     }
 </style>
