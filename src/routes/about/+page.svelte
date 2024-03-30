@@ -6,6 +6,7 @@
             in the floor into the basement where they find themselves in over their heads in a surreal environment, with
             familiar faces lurking.</p>
     </blockquote>
+    <hr/>
     <p>Interference Pattern is a story about how it's scary navigating something new, but finding that trust amongst
         yourselves to keep you going.</p>
     <p>Tyler and Darius wander aimlessly before happening upon an abandoned warehouse. With nothing else to do the pair
@@ -24,15 +25,27 @@
 </div>
 
 <style>
+    .text {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        height: 100%;
+    }
+
     .text h1 {
         font-family: Sixtyfour;
         font-size: 2.5rem;
         font-weight: normal;
+        text-align: center;
     }
 
     .text blockquote {
         background-color: white;
         color: #1f1f1f;
         padding-inline: 1rem;
+    }
+
+    .text p {
     }
 </style>

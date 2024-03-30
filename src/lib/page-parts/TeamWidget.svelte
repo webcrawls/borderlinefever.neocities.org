@@ -1,8 +1,8 @@
 <script lang="ts">
     const crew = [
         {name: 'Jude Dauphin', pronouns: 'They/Them', role: 'Producer/Editor', image: '/team/Jude.png'},
-        {name: 'Darius', pronouns: 'They/Them', role: 'Producer/Editor', image: '/team/Darius.png', fav_artist: 'MGMT'},
-        {name: 'Tyler Eliott', pronouns: 'They/Them', role: 'Director', image: '/team/Tyler 1.png'},
+        {name: 'Darius', pronouns: 'He/Him', role: 'Actor', image: '/team/Darius.png', fav_artist: 'MGMT'},
+        {name: 'Tyler Eliott', pronouns: 'They/Them', role: 'Director', image: '/team/Tyler 1.png', fav_artist: "Her's", fav_artist_desc: " I think they have a very whole sound and such a fun energy. The connection the two members have with each other is something that really resonates with me and radiates throughout their work."},
         {
             name: 'Sabrina Ngyen',
             pronouns: 'She/They',
@@ -37,8 +37,8 @@
             fav_artist_desc: 'They’ve been one of my first Korean boy bands I listen to and I just love their music. I love listening to their music before a competition or while I am doing homework. They do Chinese covers of their songs.'
         },
         {name: 'Lucas Minardi', pronouns: 'He/Him', role: 'Grip', image: '/team/Lucas.png'},
-        {name: 'Elise Stroud', pronouns: 'She/Her', role: 'Art Director', image: '/team/Elise.png'},
-        {name: 'Abby Mitchell', pronouns: 'She/They', role: 'Makeup', image: '/team/Abby.png'},
+        {name: 'Elise Stroud', pronouns: 'She/Her', role: 'Art Director', image: '/team/Elise.jpg', fav_artist: "Waterparks"},
+        {name: 'Abby Mitchell', pronouns: 'She/They', role: 'Makeup', image: '/team/Abby.png', fav_artist: "Sleep Token"},
         {
             name: 'Ben Lilley',
             pronouns: 'He/Him',
