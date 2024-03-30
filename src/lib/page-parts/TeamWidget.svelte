@@ -24,9 +24,8 @@
             name: 'Aidan Gabert',
             pronouns: 'He/Him',
             role: '1st AC',
-            image: '/team/Aidan.png',
+            image: '/team/Aidan.jpg',
             fav_artist: 'Menehan Street Band, and/or The Budos Band',
-            fav_artist_desc: ''
         },
         {
             name: 'Fj Tai',
