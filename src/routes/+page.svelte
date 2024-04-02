@@ -1,6 +1,6 @@
 <script lang="ts">
     import {writable, type Writable} from "svelte/store";
-    import {setContext} from "svelte";
+    import {getContext, onMount, setContext} from "svelte";
     import {page} from "$app/stores";
 
     const hasAnchor: boolean = $page.url.hash !== ""
@@ -11,16 +11,31 @@
     setContext("playing", playing)
     setContext("ready", ready)
     setContext("loadingProgress", loadingProgress)
+
+    const control = getContext("control")
+
+    onMount(() => {
+        $control = null
+    })
 </script>
 
-<!--<img src="/logo/logo-grayscale.png"/>-->
+<div class="image-container">
+    <img src="/logo/logo-grayscale.png"/>
+</div>
 
 <style>
     img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        padding-right: 2rem
+        padding-right: 2rem;
+        position: absolute;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
 </style>
 

@@ -1,3 +1,14 @@
+<script lang="ts">
+    import {getContext, onMount} from "svelte";
+    import TeamWidgetControl from "$lib/team-widget/TeamWidgetControl.svelte";
+
+    const control = getContext("control")
+
+    onMount(() => {
+        $control = null
+    })
+</script>
+
 <div class="text">
     <h1 id="about">ABOUT THE FILM</h1>
     <blockquote>
