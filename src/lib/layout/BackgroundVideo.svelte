@@ -18,7 +18,7 @@
        class:not-playing={!playing}
        autoplay muted loop onloadstart=""
        aria-hidden="true">
-    <source src="/junkyard-effects.mp4" type="video/mp4"/>
+    <source src="https://webcrawls.live/junkyard-effects.mp4" type="video/mp4"/>
 </video>
 
 <style>
