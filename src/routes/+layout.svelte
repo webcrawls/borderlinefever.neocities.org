@@ -3,13 +3,14 @@
     import {page} from "$app/stores"
     import {get, type Writable, writable} from "svelte/store";
     import {onMount, setContext, type SvelteComponent} from "svelte";
-    import crewData from '$lib/team-widget/team.json'
+    import crewData from '$lib/data/team.json'
+    import {browser} from "$app/environment";
 
     let uiPlaying: boolean = true
     let videoPage: boolean = $page.url.pathname !== '/'
     $: videoPage = $page.url.pathname !== '/'
 
-    const control: Writable<SvelteComponent | undefined> = writable(undefined)
+    const control: Writable<SvelteComponent | undefined> = writable({element: undefined, props: {}})
     setContext("control", control)
 
     const currentTeam: Writable<any> = (() => {
@@ -39,9 +40,38 @@
 
     setContext("currentTeam", currentTeam)
 
+    const centerTv = () => {
+        let wrapper = document.querySelector(".main-wrapper > main")
+        wrapper.scrollIntoView({
+            behavior: "auto",
+            block: "center",
+            inline: "center",
+        });
+    }
+
+    onMount(() => {
+        new ResizeObserver(() => requestAnimationFrame(() => centerTv())).observe(document.body)
+    })
+
+    // let aspectRatio = "unknown"
+    //
+    // onMount(() => setInterval(() => {
+    //     function gcd (a, b) {
+    //         return (b == 0) ? a : gcd (b, a%b);
+    //     }
+    //     var w = screen.width;
+    //     var h = screen.height;
+    //     var r = gcd (w, h);
+    //     aspectRatio = `${w}/${r}`
+    // }, 1))
 </script>
 
+<svelte:window on:load={centerTv}/>
+
 <div id="app">
+    <!--    <div style="font-size: 4rem; position: absolute; top: 0; left: 0; z-index: 999; background-color: white; color: black">-->
+    <!--        <p>aspect ratio: {aspectRatio}</p>-->
+    <!--    </div>-->
     <BackgroundVideo playing={uiPlaying && videoPage}/>
     <header>
         <div class="top">
@@ -49,188 +79,77 @@
         </div>
         <div class="bottom">
             <p>a Borderline Fever Music Video</p>
-            <a style="{!videoPage ? 'opacity: 0.0 !important;' : ''}" on:click|preventDefault={() => uiPlaying = !uiPlaying} href="#">[ {uiPlaying ? 'pause' : 'play'} video ]</a>
+            <a style="{!videoPage ? 'opacity: 0.0 !important;' : ''}"
+               on:click|preventDefault={() => uiPlaying = !uiPlaying} href="#">[ {uiPlaying ? 'pause' : 'play'} video
+                ]</a>
         </div>
     </header>
-    <main>
-        <img aria-hidden="true" src="/PATTERN-TV.png" class="tv-background"/>
-        <img aria-hidden="true" src="/BUTTON.png" class="tv-background-button"/>
-        <nav class="tv-nav">
-            <a href="/about">About</a>
-            <a href="/team">Team</a>
-            <a href="/stills">Stills</a>
-        </nav>
-        <aside class="tv-control">
-            {#if $control}
-                <svelte:component this="{$control}"></svelte:component>
-            {:else}
-                <p>OMG WE GOT KICKSTARTED!!</p>
-            {/if}
-        </aside>
-        <section>
-            <div class="section-bg"></div>
-            <div class="content-wrapper">
-                <slot/>
-            </div>
-        </section>
-    </main>
+    <div class="main-wrapper">
+        <main class="tv-frame">
+            <!--            <img aria-hidden="true" src="/PATTERN-TV.png" class="tv-background"/>-->
+            <nav class="tv-nav">
+                <a href="/about">About</a>
+                <a href="/team">Team</a>
+                <a href="/stills">Stills</a>
+            </nav>
+            <aside class="tv-control">
+                {#if $control}
+                    <svelte:component this="{$control.element}" {...$control.props}></svelte:component>
+                {:else}
+                    <p>OMG WE GOT KICKSTARTED!!</p>
+                {/if}
+            </aside>
+            <section>
+                <div class="section-bg"></div>
+                <div class="content-wrapper">
+                    <slot/>
+                </div>
+            </section>
+        </main>
+    </div>
     <footer>
-
+        <div class="footer-wrapper">
+            <nav class="section">
+                <h1>follow us >></h1>
+                <a href="https://www.instagram.com/borderlinefeverband?igsh=MXMwYW5jMGkxejgybA=="><img
+                        alt="instagram"
+                        src="/icons/instagram.svg"/></a>
+                <a href="https://www.tiktok.com/@borderlinefever?_t=8l2BBwqG2sf&_r=10"><img
+                        alt="tiktok"
+                        src="/icons/tiktok.svg"/></a>
+                <a href="https://www.youtube.com/channel/UCJ0BtK0-p1aHk923Z0u70gg"><img
+                        alt="youtube"
+                        src="/icons/youtube.svg"/></a>
+            </nav>
+            <nav class="section">
+                <h1><a href="https://borderlinefever.hearnow.com/">stream us</a> >></h1>
+                <a href="https://open.spotify.com/album/2CKCOGT6588ksI1bVJ7GXB?referral=labelaffiliate&utm_source=1100lypAhjU6&utm_medium=Indie_CDBaby&utm_campaign=labelaffiliate">
+                    <img alt="spotify"
+                         src="/icons/spotify.svg"/></a>
+                <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006?at=1000lM6c&uo=4&app=itunes">
+                    <img alt="apple"
+                         src="/icons/apple.svg"/>
+                </a>
+                <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006">
+                    <img alt="amazon"
+                         src="/icons/amazon.svg"/></a>
+            </nav>
+            <div class="section">
+                <p id="credits">made with 💖 by <a href="https://webcrawls.live">webcrawls</a></p>
+            </div>
+        </div>
     </footer>
 </div>
 
 <style>
-    :global(#app) {
-        width: 100svw;
-        min-height: 100svh;
-        position: absolute;
-
-        overflow: hidden;
-        display: grid;
-        flex-direction: column;
-        grid-template-rows: fit-content(100%) 100svh min-content;
+    .footer-wrapper a img {
+        filter: invert(100%) sepia(9%) saturate(1%) hue-rotate(67deg) brightness(101%) contrast(101%);
+        width: 24px;
+        height: 24px;
     }
 
-    main {
-        max-width: 160ch;
-        /*min-width: 70ch;*/
-        /*width: 100%;*/
-        margin-inline: auto;
-        padding: 1%;
-        margin: auto;
-        height: 80%;
-        aspect-ratio: 1 / 1;
-        position: relative;
-    }
-
-    header {
-        border-bottom: 1px solid white;
-        padding-block: 0.5rem;
-        background-color: black;
-        padding-inline: 1rem;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header > div {
-        max-width: 120ch;
-        width: 100%;
-    }
-
-    header > .top {
-        display: flex;
-        flex-direction: column;
-    }
-
-    header > .bottom {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    header .bottom a {
-        color: inherit;
-        transition: opacity 0.2s;
-        opacity: 0.5;
-    }
-
-    header .bottom a:hover {
-        opacity: 0.8;
-    }
-
-    h1 a {
-        color: inherit;
-    }
-
-    section {
-        position: absolute;
-        /*z-index: -1;*/
-        top: 11%;
-        left: 13%;
-        width: 77%;
-        height: 56%;
-        overflow: hidden;
-        padding: 2rem;
-    }
-
-    section .section-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        z-index: -1;
-    }
-
-    section .content-wrapper {
-        width: 100%;
-        height: 100%;
-        padding-block: 5%;
-        padding-inline: 5%;
-        pointer-events: all;
-        overflow-y: scroll;
-    }
-
-    main .tv-nav {
-        position: absolute;
-        /*background-color: white;*/
-        width: 52%;
-        height: 7%;
-        top: 87%;
-        left: 25%;
-
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        font-size: 1vw;
-        /*background-size: cover;*/
-    }
-
-    main .tv-control {
-        position: absolute;
-        width: 46.75%;
-        height: 7%;
-        top: 75.5%;
-        left: 27%;
-        padding: 2%;
-
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        /*background-size: cover;*/
-    }
-
-    main .tv-nav a {
-        color: white;
-        font-family: "Daydream";
-        background-image: url("/PATTERN-TV-buttons.png");
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-    }
-
-    main .tv-nav a:hover {
-        filter: invert(100%);
-    }
-
-    .tv-background {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        pointer-events: none;
-    }
-
-    .tv-background-button {
-        position: absolute;
-        top: 75%;
-        left: 26%;
-        height: 8%;
-        width: 50%
+    #credits {
+        opacity: 0.7;
+        font-style: italic;
     }
 </style>

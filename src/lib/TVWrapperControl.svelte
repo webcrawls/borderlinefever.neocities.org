@@ -1,18 +1,39 @@
 <script lang="ts">
-    import {getContext} from "svelte";
-    import crewData from '$lib/team-widget/team.json'
+    export let entries: { name: string }[] = []
+    export let changed: ((index: number) => void) | undefined = undefined
+    export let index: number = 0
 
-    const currentTeam = getContext("currentTeam")
+    const noop = () => true
+
+    $: noop(index) && changed && changed(index)
+
+    const prev = () => {
+        index -= 1
+
+        if (index < 0) {
+            index = entries.length - 1
+        }
+        console.log({prev, index})
+    }
+
+    const next = () => {
+        index += 1
+
+        if (index > entries.length - 1) {
+            index = 0
+        }
+        console.log({next, index})
+    }
 </script>
 
 <div class="team-widget">
-    <button on:click={currentTeam.prev}>Previous</button>
-    <select bind:value={$currentTeam}>
-        {#each crewData.crew as team}
-            <option value="{team}">{team.name} ({team.role})</option>
+    <button on:click={prev}>Previous</button>
+    <select bind:value={index}>
+        {#each entries as entry, index}
+            <option value="{index}">{entry.name}</option>
         {/each}
     </select>
-    <button on:click={currentTeam.next}>Next</button>
+    <button on:click={next}>Next</button>
 </div>
 
 <style>

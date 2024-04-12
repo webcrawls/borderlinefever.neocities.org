@@ -2,6 +2,8 @@
     import {writable, type Writable} from "svelte/store";
     import {getContext, onMount, setContext} from "svelte";
     import {page} from "$app/stores";
+    import TVScrollHint from "$lib/TVScrollHint.svelte";
+    import TVKickstarterHint from "$lib/TVKickstarterHint.svelte";
 
     const hasAnchor: boolean = $page.url.hash !== ""
     const ready: Writable<boolean> = writable(hasAnchor)
@@ -15,7 +17,7 @@
     const control = getContext("control")
 
     onMount(() => {
-        $control = null
+        $control = { element: TVKickstarterHint, props: {} }
     })
 </script>
 

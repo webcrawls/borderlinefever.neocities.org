@@ -1,0 +1,76 @@
+{
+  "stills": [
+    {
+      "name": "Still 1",
+      "image": "/stills/1.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 2",
+      "image": "/stills/2.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 3",
+      "image": "/stills/3.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 4",
+      "image": "/stills/4.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 5",
+      "image": "/stills/5.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 6",
+      "image": "/stills/6.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 7",
+      "image": "/stills/7.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 8",
+      "image": "/stills/8.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    },
+    {
+      "name": "Still 9",
+      "image": "/stills/9.jpg",
+      "meta": {
+        "title": null,
+        "description": null
+      }
+    }
+  ]
+}

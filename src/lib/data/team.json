@@ -1,19 +1,19 @@
 {
   "crew": [
     {
-      "name": "Darius",
-      "pronouns": "He/Him",
-      "role": "Actor",
-      "image": "/team/Darius.jpg",
-      "fav_artist": "MGMT"
-    },
-    {
       "name": "Tyler Eliott",
       "pronouns": "They/Them",
       "role": "Director",
       "image": "/team/Tyler.jpg",
       "fav_artist": "Her's",
       "fav_artist_desc": " I think they have a very whole sound and such a fun energy. The connection the two members have with each other is something that really resonates with me and radiates throughout their work."
+    },
+    {
+      "name": "Darius",
+      "pronouns": "He/Him",
+      "role": "Actor",
+      "image": "/team/Darius.jpg",
+      "fav_artist": "MGMT"
     },
     {
       "name": "Sabrina Ngyen",
@@ -32,9 +32,19 @@
       "fav_artist_desc": "Talking Heads because Talking Heads"
     },
     {
-      "name": "John-Michael Crljen",
+      "name": "Elise Stroud",
+      "pronouns": "She/Her",
+      "role": "Art Director",
+      "image": "/team/Elise.jpg",
+      "fav_artist": "Waterparks"
+    },
+    {
+      "name": "Kaden Scott",
       "pronouns": "He/Him",
-      "role": "Writer"
+      "role": "Web Designer",
+      "image": "/team/Kaden.jpg",
+      "fav_artist": "Watsky",
+      "fav_artist_desc": "My favourite artist is Watsky, having followed him from his Epic Rap Battle days, to releasing multiple groundbreaking albums that are constantly on repeat 🎵 Watching his sound develop over years of projects has been super cool and inspiring (￣▽￣)/♫•*¨*•.¸¸♪"
     },
     {
       "name": "Aidan Gabert",
@@ -44,7 +54,7 @@
       "fav_artist": "Menehan Street Band, and/or The Budos Band"
     },
     {
-      "name": "Fj Tai",
+      "name": "FJ Tai",
       "pronouns": "She/Her",
       "role": "Camera Op",
       "image": "/team/FJ.jpg",
@@ -52,23 +62,40 @@
       "fav_artist_desc": "They’ve been one of my first Korean boy bands I listen to and I just love their music. I love listening to their music before a competition or while I am doing homework. They do Chinese covers of their songs."
     },
     {
-      "name": "Lucas Minardi",
+      "name": "Alan Haw",
       "pronouns": "He/Him",
-      "role": "Grip"
+      "role": "Gaffer",
+      "fav_artist": "Borderline Fever",
+      "image": "/team/Alan.jpg"
     },
     {
-      "name": "Elise Stroud",
+      "name": "Veda Menghani",
       "pronouns": "She/Her",
-      "role": "Art Director",
-      "image": "/team/Elise.jpg",
-      "fav_artist": "Waterparks"
+      "role": "Grip",
+      "fav_artist": "Borderline Fever",
+      "image": "/team/Veda.jpg"
     },
     {
-      "name": "Abby Mitchell",
+      "name": "Abigail Mitchell",
       "pronouns": "She/They",
       "role": "Makeup",
       "image": "/team/Abby.jpg",
       "fav_artist": "Sleep Token"
+    },
+    {
+      "name": "Milo Galley",
+      "pronouns": "Any",
+      "role": "Art Department",
+      "image": "/team/Milo.jpg",
+      "fav_artist": "Borderline Fever",
+      "fav_artist_desc": "I like too many musicians to pick a favourite, music is too complex to say one is better than all others"
+    },
+    {
+      "name": "Chiara Ruggiero",
+      "pronouns": "She/Her",
+      "role": "Production Assistant",
+      "fav_artist": "Borderline Fever",
+      "image": "/team/Chiara.jpg"
     },
     {
       "name": "Ben Lilley",
@@ -87,48 +114,11 @@
       "fav_artist_desc": "He’s been a part of many musical scores that have an impact of the media I consume. His music still make me feel connected to the characters even with the songs on their own."
     },
     {
-      "name": "Milo Galley",
-      "pronouns": "Any",
-      "role": "Art Department",
-      "image": "/team/Milo.jpg",
-      "fav_artist": "Borderline Fever",
-      "fav_artist_desc": "I like too many musicians to pick a favourite, music is too complex to say one is better than all others"
-    },
-    {
-      "name": "Kaden Scott",
-      "pronouns": "He/Him",
-      "role": "Web Designer",
-      "image": "/team/Kaden.jpg",
-      "fav_artist": "Watsky",
-      "fav_artist_desc": "My favourite artist is Watsky, having followed him from his Epic Rap Battle days, to releasing multiple groundbreaking albums that are constantly on repeat 🎵 Watching his sound develop over years of projects has been super cool and inspiring (￣▽￣)/♫•*¨*•.¸¸♪"
-    },
-    {
-      "name": "Veda Menghani",
-      "pronouns": "She/Her",
-      "role": "Grip",
-      "fav_artist": "Borderline Fever",
-      "image": "/team/Veda.jpg"
-    },
-    {
       "name": "Cameron Jaigobin",
       "pronouns": "He/Him",
       "role": "Transmedia",
       "fav_artist": "The Flaming Lips",
       "image": "/team/Cameron.jpg"
-    },
-    {
-      "name": "Alan Haw",
-      "pronouns": "He/Him",
-      "role": "Gaffer",
-      "fav_artist": "Borderline Fever",
-      "image": "/team/Alan.jpg"
-    },
-    {
-      "name": "Chiara Ruggiero",
-      "pronouns": "She/Her",
-      "role": "Production Assistant",
-      "fav_artist": "Borderline Fever",
-      "image": "/team/Chiara.jpg"
     }
   ]
 }

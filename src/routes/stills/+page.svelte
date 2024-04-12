@@ -1,9 +1,7 @@
 <script lang="ts">
-    import {getContext, onMount} from "svelte";
-
-    const control = getContext("control")
-
-    onMount(() => {
-        $control = null
-    })
+    import TVWrapperViewer from "$lib/TVWrapperViewer.svelte";
+    import stills from '$lib/data/stills.json'
+    import {page} from "$app/stores";
 </script>
+
+<TVWrapperViewer entries="{stills.stills}"/>

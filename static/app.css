@@ -18,6 +18,7 @@
     --fg-3: #88149a;
     --fg-4: #ef1f3b;
     --fg-5: #72b8d3;
+    --header-footer-content-width: 120ch;
 }
 
 * {
@@ -47,4 +48,276 @@ html {
 
 .no-debug, .no-debug * {
     --debug-border: none !important;
+}
+
+#app {
+    width: 100svw;
+    height: 100svh;
+    position: absolute;
+
+    overflow: hidden;
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.main-wrapper {
+    height: 100%;
+    position: relative;
+    margin-inline: auto;
+    /*padding-block: 1vh;*/
+    /*padding-inline: 1vw;*/
+    aspect-ratio: 1 / 1;
+    /*width: 100%;*/
+    /*scroll-snap-align: center;*/
+    overflow: hidden;
+
+    display: flex;
+    width: 100%;
+    max-width: 100svw;
+}
+
+main {
+    /*transform: scale(0.9);*/
+    max-width: 120ch;
+    /*width: 100%;*/
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    /*overflow-y: hidden;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: fit-content(100%);
+    transform-origin: center center;
+
+    margin: auto;
+}
+
+main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/PATTERN-TV.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    z-index: -1;
+}
+
+footer {
+    background-color: black;
+    height: 100%;
+    padding-block: 0.5rem;
+    border-top: 1px solid white;
+
+}
+
+footer .footer-wrapper {
+    padding-inline: 1.5rem;
+    max-width: var(--header-footer-content-width);
+    width: 100%;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+footer .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    gap: 0.5rem;
+}
+
+footer a {
+    color: inherit;
+}
+
+header {
+    border-bottom: 1px solid white;
+    padding-block: 0.5rem;
+    background-color: black;
+    padding-inline: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header > div {
+    max-width: var(--header-footer-content-width);
+    width: 100%;
+}
+
+header > .top {
+    display: flex;
+    flex-direction: column;
+}
+
+header > .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .bottom a {
+    color: inherit;
+    transition: opacity 0.2s;
+    opacity: 0.5;
+}
+
+header .bottom a:hover {
+    opacity: 0.8;
+}
+
+h1 a {
+    color: inherit;
+}
+
+section {
+    position: absolute;
+    top: 11%;
+    left: 13%;
+    width: 77%;
+    height: 56%;
+    overflow: hidden;
+    /*padding: 2rem;*/
+    /*padding: 1rem;*/
+
+    display: flex;
+}
+
+section .section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: black;*/
+    z-index: -1;
+}
+
+section .content-wrapper {
+    width: 100%;
+    height: 100%;
+    /*padding-block: 5%;*/
+    /*padding-inline: 5%;*/
+    padding: 2rem;
+    pointer-events: all;
+    position: relative;
+}
+
+main .tv-nav {
+    position: absolute;
+
+    /*background-color: white;*/
+    height: 9%;
+    top: 87%;
+    width: 61%;
+    left: 21%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 0.25rem;
+    font-size: 1vw;
+
+    z-index: 1;
+    /*background-size: cover;*/
+}
+
+main .tv-nav a {
+    color: white;
+    font-family: "Daydream";
+    background-image: url("/PATTERN-TV-buttons.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    padding-inline: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+main .tv-control {
+    position: absolute;
+    height: clamp(1rem, 12%, 64px);
+    top: 75.5%;
+    width: 61%;
+    left: 21%;
+    padding: 2%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    background-image: url("/BUTTON.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-block: 0.2rem;
+
+    z-index: 1;
+}
+
+main .tv-nav a:hover {
+    filter: invert(100%);
+}
+
+.tv-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min-content;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.tv-background-button {
+    position: absolute;
+    top: 75%;
+    left: 26%;
+    height: 8%;
+    width: 50%
+}
+
+/*@media screen and (min-aspect-ratio: ) {*/
+/*    .main-wrapper {*/
+/*        overflow-x: visible;*/
+/*    }*/
+
+/*    main {*/
+/*        overflow: visible;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 550px) {
+    main {
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width: 475px) {
+    main {
+        transform: scale(0.85);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    main {
+        transform: scale(0.8);
+    }
 }
