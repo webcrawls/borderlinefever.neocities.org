@@ -108,26 +108,32 @@
             <div class="footer-wrapper">
                 <nav class="section">
                     <h1>follow us >></h1>
-                    <a href="https://www.instagram.com/borderlinefeverband?igsh=MXMwYW5jMGkxejgybA=="><img
+                    <a href="https://www.instagram.com/borderlinefeverband?igsh=MXMwYW5jMGkxejgybA=="
+                       class="icon-link"><img
                             alt="instagram"
                             src="/icons/instagram.svg"/></a>
-                    <a href="https://www.tiktok.com/@borderlinefever?_t=8l2BBwqG2sf&_r=10"><img
+                    <a href="https://www.tiktok.com/@borderlinefever?_t=8l2BBwqG2sf&_r=10"
+                       class="icon-link"><img
                             alt="tiktok"
                             src="/icons/tiktok.svg"/></a>
-                    <a href="https://www.youtube.com/channel/UCJ0BtK0-p1aHk923Z0u70gg"><img
+9                    <a href="https://www.youtube.com/channel/UCJ0BtK0-p1aHk923Z0u70gg"
+                       class="icon-link"><img
                             alt="youtube"
                             src="/icons/youtube.svg"/></a>
                 </nav>
                 <nav class="section">
                     <h1><a href="https://borderlinefever.hearnow.com/">stream us</a> >></h1>
-                    <a href="https://open.spotify.com/album/2CKCOGT6588ksI1bVJ7GXB?referral=labelaffiliate&utm_source=1100lypAhjU6&utm_medium=Indie_CDBaby&utm_campaign=labelaffiliate">
+                    <a href="https://open.spotify.com/album/2CKCOGT6588ksI1bVJ7GXB?referral=labelaffiliate&utm_source=1100lypAhjU6&utm_medium=Indie_CDBaby&utm_campaign=labelaffiliate"
+                       class="icon-link">
                         <img alt="spotify"
                              src="/icons/spotify.svg"/></a>
-                    <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006?at=1000lM6c&uo=4&app=itunes">
+                    <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006?at=1000lM6c&uo=4&app=itunes"
+                       class="icon-link">
                         <img alt="apple"
                              src="/icons/apple.svg"/>
                     </a>
-                    <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006">
+                    <a href="https://music.apple.com/ca/album/goin-steady-single/1717085006"
+                       class="icon-link">
                         <img alt="amazon"
                              src="/icons/amazon.svg"/></a>
                 </nav>
@@ -147,7 +153,7 @@
 </div>
 
 <style>
-    .footer-wrapper a img {
+    .icon-link img {
         filter: invert(100%) sepia(9%) saturate(1%) hue-rotate(67deg) brightness(101%) contrast(101%);
         width: 24px;
         height: 24px;
