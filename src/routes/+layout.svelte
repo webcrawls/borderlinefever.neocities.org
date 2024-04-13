@@ -81,7 +81,7 @@
         <div class="footer-container">
             <div class="footer-wrapper">
                 <nav class="section">
-                    <h1>follow us >></h1>
+                    <h1>follow us <span class="arrows">>></span></h1>
                     <a href="https://www.instagram.com/borderlinefeverband?igsh=MXMwYW5jMGkxejgybA=="
                        rel="external"
                        class="icon-link"><img
@@ -99,7 +99,7 @@
                             src="/icons/youtube.svg"/></a>
                 </nav>
                 <nav class="section">
-                    <h1><a rel="external" href="https://borderlinefever.hearnow.com/">stream us</a> >></h1>
+                    <h1><a rel="external" href="https://borderlinefever.hearnow.com/">stream us</a> <span class="arrows">>></span></h1>
                     <a href="https://open.spotify.com/album/2CKCOGT6588ksI1bVJ7GXB?referral=labelaffiliate&utm_source=1100lypAhjU6&utm_medium=Indie_CDBaby&utm_campaign=labelaffiliate"
                        rel="external"
                        class="icon-link">
@@ -118,7 +118,7 @@
                              src="/icons/amazon.svg"/></a>
                 </nav>
                 <div class="section">
-                    <p id="credits">made with 💖 by <a rel="external" href="https://webcrawls.live">webcrawls</a></p>
+                    <p id="credits"><span class="made">made</span> with 💖 by <a rel="external" href="https://webcrawls.live">webcrawls</a></p>
                 </div>
             </div>
             <div class="image-bin">
