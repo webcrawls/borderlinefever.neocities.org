@@ -29,8 +29,12 @@
     }
 
     const centerTv = () => {
-        let wrapper = document.querySelector(".main-wrapper")
-        scrollElementIntoView(wrapper)
+        let wrapper = document.querySelector(".main-wrapper main")
+        wrapper.scrollIntoView({
+            behavior: "auto",
+            block: "center",
+            inline: "center",
+        });
     }
 
     onMount(() => {

@@ -137,7 +137,6 @@
         border: 2px solid black;
         backdrop-filter: blur(4px);
         border-radius: 2px;
-        font-size: 20px;
 
         width: min-content;
         height: min-content;
@@ -190,6 +189,10 @@
         font-size: 12px;
         font-style: italic;
         font-weight: normal;
+    }
+
+    .text-container p {
+        font-size: clamp(14px, 3vw, 20px);
     }
 
     .hidden {
