@@ -2,8 +2,8 @@
 	import { page } from '$app/stores';
 
 	const title = 'INTERFERENCE PATTERN';
-	const url = 'borderlinefever.neocities.org';
-	const domain = 'https://borderlinefever.neocities.org';
+	const url = 'https://borderlinefever.neocities.org';
+	const domain = 'borderlinefever.neocities.org';
 	const locale = 'en_US';
 	const description = 'Two brothers decide to explore an old warehouse, out of curiosity of what lies inside. A short film by Borderline Fever and Sheridan college.';
 	const image = 'https://borderlinefever.neocities.org/logo/logo-colour.png';
