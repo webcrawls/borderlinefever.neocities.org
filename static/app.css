@@ -261,8 +261,8 @@ main .tv-nav {
     /*background-color: white;*/
     height: 9%;
     top: 87%;
-    width: 61%;
-    left: 21%;
+    width: 58%;
+    left: 22%;
 
     display: flex;
     justify-content: space-between;
@@ -294,8 +294,8 @@ main .tv-control {
     position: absolute;
     height: clamp(1rem, 12%, 64px);
     top: 75.5%;
-    width: 61%;
-    left: 21%;
+    width: 58.5%;
+    left: 22%;
     padding: 2%;
 
     display: flex;

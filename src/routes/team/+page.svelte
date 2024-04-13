@@ -21,4 +21,6 @@
     }))
 </script>
 
-<TVWrapperViewer {entries}/>
+<TVWrapperViewer {entries}
+                 baseTitle="🎬 Team, Role"
+                 metaTitle="🎶❤️ Favourite Artist"/>

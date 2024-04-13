@@ -11,6 +11,9 @@
         }
     }
 
+    export let baseTitle: string = ""
+    export let metaTitle: string = ""
+
     export let entries: Entry[] = []
 
     let staticElement: HTMLElement = undefined
@@ -39,9 +42,10 @@
         $control = {
             element: TVWrapperControl, props: {
                 entries, index: 0, changed: (i) => {
-                    console.log("Viewing "+i)
+                    console.log("Viewing " + i)
                     index = i
                     showDescription = false
+                    flicker()
                 }
             }
         }
@@ -67,19 +71,24 @@
         <img bind:this={imageElement}
              class:no-image={!item.image ?? true}
              class="main-image"
-             alt="An image of {item.name}"
+             alt="An image of {item.name}."
              src="{isFlicker ? '/invisible.png' : item.image}"/>
-        <h1 class="text-title"
-            class:offset={index % 2 === 0}><b>{item.name ?? 'N/A'}</b></h1>
+        <section class="text-container"
+                 class:offset={index % 2 !== 0}
+                 class:hidden={isFlicker}>
+            <h1>{baseTitle ?? 'n/a'}</h1>
+            <p><b>{item.name ?? 'N/A'}</b></p>
+        </section>
         {#if item.meta && item.meta.title}
-            <div class="description"
-                 on:click={() => showDescription = !showDescription}
-                 class:offset={index % 2 === 0}>
-                <p class="description-title">🎶 <b>{item.meta.title}</b></p>
+            <section class="text-container alt"
+                     class:offset={index % 2 !== 0}
+                     class:hidden={isFlicker}>
+                <h1>{metaTitle ?? 'n/a'}</h1>
+                <p class="description-title"><b>{item.meta.title}</b></p>
                 {#if item.meta.description && showDescription}
                     <p class="description-text">{item.meta.description}</p>
                 {/if}
-            </div>
+            </section>
         {/if}
     {/if}
 </section>
@@ -118,57 +127,61 @@
         visibility: hidden;
     }
 
-    .text-title {
+    .text-container {
         pointer-events: all;
         position: absolute;
         background-color: rgba(255, 255, 255, 0.75);
         color: black;
         padding-inline: 0.5rem;
         padding-block: 0.25rem;
+        border: 2px solid black;
+        backdrop-filter: blur(4px);
         border-radius: 2px;
         font-size: 20px;
-        top: 20px;
-        left: 20px;
-    }
 
-    .text-title.offset {
-        pointer-events: all;
-        left: unset;
-        top: 16px;
-        right: 60px;
-        text-align: right;
         width: min-content;
+        height: min-content;
         white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+
+        --top-distance: 4%;
+        --left-distance: 4%;
+        --right-distance: 8%;
+        --bottom-distance: 4%;
+
+        top: var(--top-distance);
+        left: var(--left-distance);
     }
 
-    .description {
-        pointer-events: all;
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.75);
-        color: black;
-        padding-inline: 0.5rem;
-        padding-block: 0.25rem;
-        border-radius: 2px;
-        font-size: 20px;
-        bottom: 40px;
-        max-width: 50%;
-        right: 60px;
-        margin-right: unset;
-        margin-left: 3rem;
+    .text-container.alt {
+        top: unset;
+        left: unset;
+        bottom: var(--bottom-distance);
+        right: var(--right-distance);
     }
 
-    .description .description-title {
-        pointer-events: all;
-    }
-
-    .description.offset {
-        left: 1%;
+    .text-container.alt.offset {
+        top: unset;
+        left: var(--left-distance);
+        bottom: var(--bottom-distance);
         right: unset;
-        bottom: 2%;
     }
 
-    .description > .description-text {
-        font-size: 1rem;
-        max-width: 60ch;
+    .text-container.offset {
+        top: var(--top-distance);
+        left: unset;
+        right: var(--right-distance);
+        bottom: unset;
+    }
+
+    .text-container h1 {
+        font-size: 12px;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .hidden {
+        visibility: hidden;
     }
 </style>
