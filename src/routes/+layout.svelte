@@ -51,7 +51,7 @@
             <p>a Borderline Fever Music Video</p>
             <button style="{!videoPage ? 'opacity: 0.0 !important;' : ''}"
                     on:click|preventDefault={() => uiPlaying = !uiPlaying}>
-                [ {uiPlaying ? 'pause' : 'play'} video ]
+                {uiPlaying ? 'pause' : 'play'}
             </button>
         </div>
     </header>
