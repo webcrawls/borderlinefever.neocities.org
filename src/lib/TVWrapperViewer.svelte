@@ -35,6 +35,7 @@
     let showDescription: boolean = false
 
     const control = getContext("control")
+    const prefersReduced = getContext("prefersReduced")
     // $: index = crewData.crew.indexOf($currentTeam)
     // $: $currentTeam && flicker()
 
@@ -45,7 +46,9 @@
                     console.log("Viewing " + i)
                     index = i
                     showDescription = false
-                    flicker()
+                    if (!$prefersReduced) {
+                        flicker()
+                    }
                 }
             }
         }
