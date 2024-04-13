@@ -1,6 +1,12 @@
 # borderlinefever.neocities.org
 
-The official site for the Borderline Fever band!
+A website initially designed for the Interference Pattern music video, a project between Borderline Fever and Sheridan
+college.
+
+> [Visit the website here](https://borderlinefever.neocities.org)!
+
+![the Interference Pattern logo](/static/logo/logo-colour.png)
+![the Sheridan logo](/static/logo/sheridan-logo.png)
 
 ## Setup and Running Locally
 
