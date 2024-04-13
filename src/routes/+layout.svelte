@@ -116,7 +116,7 @@
                        class="icon-link"><img
                             alt="tiktok"
                             src="/icons/tiktok.svg"/></a>
-9                    <a href="https://www.youtube.com/channel/UCJ0BtK0-p1aHk923Z0u70gg"
+                    <a href="https://www.youtube.com/channel/UCJ0BtK0-p1aHk923Z0u70gg"
                        class="icon-link"><img
                             alt="youtube"
                             src="/icons/youtube.svg"/></a>
