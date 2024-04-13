@@ -122,7 +122,7 @@
                             src="/icons/youtube.svg"/></a>
                 </nav>
                 <nav class="section">
-                    <h1><a href="https://borderlinefever.hearnow.com/">stream us</a> >></h1>
+                    <h1><a rel="external" href="https://borderlinefever.hearnow.com/">stream us</a> >></h1>
                     <a href="https://open.spotify.com/album/2CKCOGT6588ksI1bVJ7GXB?referral=labelaffiliate&utm_source=1100lypAhjU6&utm_medium=Indie_CDBaby&utm_campaign=labelaffiliate"
                        class="icon-link">
                         <img alt="spotify"
@@ -138,11 +138,11 @@
                              src="/icons/amazon.svg"/></a>
                 </nav>
                 <div class="section">
-                    <p id="credits">made with 💖 by <a href="https://webcrawls.live">webcrawls</a></p>
+                    <p id="credits">made with 💖 by <a rel="external" href="https://webcrawls.live">webcrawls</a></p>
                 </div>
             </div>
             <div class="image-bin">
-                <a href="https://www.sheridancollege.ca" rel="external">
+                <a rel="external" href="https://www.sheridancollege.ca">
                     <img src="/logo/sheridan-logo.png" alt="The Sheridan college logo."
                          style="filter: invert(94%) sepia(94%) saturate(0%) hue-rotate(241deg) brightness(106%) contrast(105%);"/>
                 </a>

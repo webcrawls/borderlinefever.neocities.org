@@ -15,7 +15,7 @@ const config = {
 		prerender: {
 			handleMissingId: "warn"
 		}
-	}
+	},
 };
 
 export default config;

@@ -8,7 +8,14 @@ college.
 ![the Interference Pattern logo](/static/logo/logo-colour.png)
 ![the Sheridan logo](/static/logo/sheridan-logo.png)
 
-## Setup and Running Locally
+- [Setup and Local Development](#step-and-local-development)
+  - [Install Dependencies](#)
+  - [Clone Repository](#)
+  - [Run and Build](#)
+- [Technical Details](#)
+  - [Landmarks](#)
+
+## Setup and Local Development
 
 _These instructions are generally written for Windows computers. If you are on Linux or macOS, the instructions are
 different, but you should know what you're doing in that case =) [contact webcrawls for help if you need it]_
@@ -50,3 +57,9 @@ _If you are looking to build the full HTML-version of the website, follow these 
 2. Ensure you have the `npm` dependencies by running `npm install`.
 3. Run `npm run build` to compile the website. The output will be in the `build/` folder, which you can upload the
    contents of to most web hosts.
+
+## Technical Details
+
+### Landmarks
+
+- [src/lib/Metadata.svelte](src/lib/Metadata.svelte) - meta/opengraph `<head>` tags
