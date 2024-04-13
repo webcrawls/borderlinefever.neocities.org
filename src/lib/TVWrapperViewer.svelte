@@ -69,7 +69,7 @@
          src="{'/static-crt.gif'}"/>
     {#if item}
         <img bind:this={imageElement}
-             class:no-image={!item.image ?? true}
+             class:no-image={!item.image}
              class="main-image"
              alt="An image of {item.name}."
              src="{isFlicker ? '/invisible.png' : item.image}"/>
