@@ -150,11 +150,18 @@
         --right-distance: 8%;
         --bottom-distance: 4%;
 
+        --background-1: rgba(137, 220, 255, 0.7);
+        --background-2: rgba(160, 255, 160, 0.7);
+
+        background: var(--background-1);
+
         top: var(--top-distance);
         left: var(--left-distance);
     }
 
     .text-container.alt {
+        background: var(--background-2);
+
         top: unset;
         left: unset;
         bottom: var(--bottom-distance);
@@ -162,6 +169,8 @@
     }
 
     .text-container.alt.offset {
+        background: var(--background-1);
+
         top: unset;
         left: var(--left-distance);
         bottom: var(--bottom-distance);
@@ -169,6 +178,8 @@
     }
 
     .text-container.offset {
+        background: var(--background-2);
+
         top: var(--top-distance);
         left: unset;
         right: var(--right-distance);
