@@ -40,17 +40,39 @@
 
     setContext("currentTeam", currentTeam)
 
+    const scrollElementIntoView = (element: HTMLElement, behavior?: 'smooth' | 'instant' | 'auto') => {
+
+        let scrollTop = window.pageYOffset || element.scrollTop
+
+        // Furthermore, if you have for example a header outside the iframe
+        // you need to factor in its dimensions when calculating the position to scroll to
+        const finalOffset = element.getBoundingClientRect().top + scrollTop
+
+        element.scrollTo({
+            top: finalOffset * 2,
+            behavior: behavior || 'auto'
+        })
+
+        console.log({finalOffset})
+    }
+
     const centerTv = () => {
-        let wrapper = document.querySelector(".main-wrapper > main")
-        wrapper.scrollIntoView({
-            behavior: "auto",
-            block: "center",
-            inline: "center",
-        });
+        let wrapper = document.querySelector(".main-wrapper")
+        const elementRect = wrapper.getBoundingClientRect();
+
+        // wrapper.scrollIntoView({
+        //     behavior: "instant",
+        //     block: "center",
+        //     inline: "center",
+        // });
+
+        scrollElementIntoView(wrapper)
+        // wrapper.scrollTo({ left: middle})
+        // console.log("scrolling to "+middle)
     }
 
     onMount(() => {
-        new ResizeObserver(() => requestAnimationFrame(() => centerTv())).observe(document.body)
+        new ResizeObserver(() => setTimeout(() => centerTv(), 10)).observe(document.body)
     })
 
     // let aspectRatio = "unknown"
@@ -139,7 +161,11 @@
                     <p id="credits">made with 💖 by <a href="https://webcrawls.live">webcrawls</a></p>
                 </div>
             </div>
-            <img src="/logo/logo-colour-pixels.png" alt="A pixelated version of the Interference Pattern logo."/>
+            <div class="image-bin">
+                <img src="/logo/sheridan-logo.png" alt="The Borderline Fever logo."
+                     style="filter: invert(94%) sepia(94%) saturate(0%) hue-rotate(241deg) brightness(106%) contrast(105%);"/>
+                <img src="/logo/blf-logo.png" alt="The Sheridan College logo."/>
+            </div>
         </div>
     </footer>
 </div>

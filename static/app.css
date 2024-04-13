@@ -123,12 +123,13 @@ footer .footer-container {
     padding-inline: 1.5rem;
     max-width: var(--header-footer-content-width);
     width: 100%;
+    z    height: 100%;
     margin-inline: auto;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 }
 
 footer .footer-wrapper {
@@ -137,15 +138,32 @@ footer .footer-wrapper {
     flex-direction: column;
 }
 
-footer .footer-container > img {
-    /*height: min-content;*/
-    /*width: 100%;*/
-    width: 150px;
-    /*margin-block: auto;*/
-    align-self: center;
+.image-bin {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    min-height: 0;
+    align-items: center;
 }
+
+.image-bin img {
+    width: 100px;
+    object-fit: contain;
+    height: min-content;
+}
+
+.image-bin img:last-child {
+    width: 80px;
+}
+
+/*footer .footer-container > img {*/
+/*    !*height: min-content;*!*/
+/*    !*width: 100%;*!*/
+/*    width: 150px;*/
+/*    !*margin-block: auto;*!*/
+/*    align-self: center;*/
+/*    height: 100%;*/
+/*    min-height: 0;*/
+/*}*/
 
 footer .section {
     display: flex;
@@ -326,21 +344,21 @@ main .tv-nav a:hover {
 /*}*/
 
 @media screen and (max-width: 550px) {
-    main {
-        transform: scale(0.9);
-    }
+    /*main {*/
+    /*    transform: scale(0.9);*/
+    /*}*/
 }
 
 @media screen and (max-width: 475px) {
-    main {
-        transform: scale(0.85);
-    }
+    /*main {*/
+    /*    transform: scale(0.85);*/
+    /*}*/
 }
 
 @media screen and (max-width: 440px) {
-    main {
-        transform: scale(0.8);
-    }
+    /*main {*/
+    /*    transform: scale(0.8);*/
+    /*}*/
 
     footer .footer-container > img {
         width: 80px;
