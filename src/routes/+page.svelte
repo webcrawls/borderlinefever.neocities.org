@@ -22,7 +22,7 @@
 </script>
 
 <div class="image-container">
-    <img src="/logo/logo-grayscale.png"/>
+    <img alt="The Interference Pattern logo, grayscale." src="/logo/logo-grayscale.png"/>
 </div>
 
 <style>

@@ -4,7 +4,6 @@
     import {get, type Writable, writable} from "svelte/store";
     import {onMount, setContext, type SvelteComponent} from "svelte";
     import crewData from '$lib/data/team.json'
-    import {browser} from "$app/environment";
 
     let uiPlaying: boolean = true
     let videoPage: boolean = $page.url.pathname !== '/'
@@ -58,42 +57,17 @@
 
     const centerTv = () => {
         let wrapper = document.querySelector(".main-wrapper")
-        const elementRect = wrapper.getBoundingClientRect();
-
-        // wrapper.scrollIntoView({
-        //     behavior: "instant",
-        //     block: "center",
-        //     inline: "center",
-        // });
-
         scrollElementIntoView(wrapper)
-        // wrapper.scrollTo({ left: middle})
-        // console.log("scrolling to "+middle)
     }
 
     onMount(() => {
         new ResizeObserver(() => setTimeout(() => centerTv(), 10)).observe(document.body)
     })
-
-    // let aspectRatio = "unknown"
-    //
-    // onMount(() => setInterval(() => {
-    //     function gcd (a, b) {
-    //         return (b == 0) ? a : gcd (b, a%b);
-    //     }
-    //     var w = screen.width;
-    //     var h = screen.height;
-    //     var r = gcd (w, h);
-    //     aspectRatio = `${w}/${r}`
-    // }, 1))
 </script>
 
 <svelte:window on:load={centerTv}/>
 
 <div id="app">
-    <!--    <div style="font-size: 4rem; position: absolute; top: 0; left: 0; z-index: 999; background-color: white; color: black">-->
-    <!--        <p>aspect ratio: {aspectRatio}</p>-->
-    <!--    </div>-->
     <BackgroundVideo playing={uiPlaying && videoPage}/>
     <header>
         <div class="top">
@@ -101,14 +75,14 @@
         </div>
         <div class="bottom">
             <p>a Borderline Fever Music Video</p>
-            <a style="{!videoPage ? 'opacity: 0.0 !important;' : ''}"
-               on:click|preventDefault={() => uiPlaying = !uiPlaying} href="#">[ {uiPlaying ? 'pause' : 'play'} video
-                ]</a>
+            <button style="{!videoPage ? 'opacity: 0.0 !important;' : ''}"
+                    on:click|preventDefault={() => uiPlaying = !uiPlaying}>
+                [ {uiPlaying ? 'pause' : 'play'} video ]
+            </button>
         </div>
     </header>
     <div class="main-wrapper">
         <main class="tv-frame">
-            <!--            <img aria-hidden="true" src="/PATTERN-TV.png" class="tv-background"/>-->
             <nav class="tv-nav">
                 <a href="/about">About</a>
                 <a href="/team">Team</a>
@@ -162,9 +136,11 @@
                 </div>
             </div>
             <div class="image-bin">
-                <img src="/logo/sheridan-logo.png" alt="The Borderline Fever logo."
-                     style="filter: invert(94%) sepia(94%) saturate(0%) hue-rotate(241deg) brightness(106%) contrast(105%);"/>
-                <img src="/logo/blf-logo.png" alt="The Sheridan College logo."/>
+                <a href="https://www.sheridancollege.ca" rel="external">
+                    <img src="/logo/sheridan-logo.png" alt="The Sheridan college logo."
+                         style="filter: invert(94%) sepia(94%) saturate(0%) hue-rotate(241deg) brightness(106%) contrast(105%);"/>
+                </a>
+                <img src="/logo/blf-logo.png" alt="The Borderline Fever logo."/>
             </div>
         </div>
     </footer>

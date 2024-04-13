@@ -208,13 +208,15 @@ header .bottom p {
     opacity: 0.7;
 }
 
-header .bottom a {
+header .bottom button {
     color: inherit;
     transition: opacity 0.2s;
     opacity: 0.5;
+    background-color: unset;
+    border: none;
 }
 
-header .bottom a:hover {
+header .bottom button:hover {
     opacity: 0.8;
 }
 
