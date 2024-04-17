@@ -6,14 +6,16 @@
       "role": "Director",
       "image": "/team/Tyler.jpg",
       "fav_artist": "Her's",
-      "fav_artist_desc": " I think they have a very whole sound and such a fun energy. The connection the two members have with each other is something that really resonates with me and radiates throughout their work."
+      "fav_artist_desc": " I think they have a very whole sound and such a fun energy. The connection the two members have with each other is something that really resonates with me and radiates throughout their work.",
+      "id": "tyler"
     },
     {
       "name": "Darius",
       "pronouns": "He/Him",
       "role": "Actor",
       "image": "/team/Darius.jpg",
-      "fav_artist": "MGMT"
+      "fav_artist": "MGMT",
+      "id": "darius"
     },
     {
       "name": "Sabrina Ngyen",
@@ -21,7 +23,8 @@
       "role": "1st AD",
       "image": "/team/Sabrina.jpg",
       "fav_artist": "Tyler the Creator",
-      "fav_artist_desc": "I love the perspective he gives and the stories he tells in his music. Also his play with words are fun to listen to."
+      "fav_artist_desc": "I love the perspective he gives and the stories he tells in his music. Also his play with words are fun to listen to.",
+      "id": "sabrina"
     },
     {
       "name": "Mitchell Hook",
@@ -29,14 +32,16 @@
       "role": "DoP",
       "image": "/team/Mitch.jpg",
       "fav_artist": "Talking Heads",
-      "fav_artist_desc": "Talking Heads because Talking Heads"
+      "fav_artist_desc": "Talking Heads because Talking Heads",
+      "id": "mitchell"
     },
     {
       "name": "Elise Stroud",
       "pronouns": "She/Her",
       "role": "Art Director",
       "image": "/team/Elise.jpg",
-      "fav_artist": "Waterparks"
+      "fav_artist": "Waterparks",
+      "id": "elise"
     },
     {
       "name": "Kaden Scott",
@@ -44,14 +49,16 @@
       "role": "Web Designer",
       "image": "/team/Kaden.jpg",
       "fav_artist": "Watsky",
-      "fav_artist_desc": "My favourite artist is Watsky, having followed him from his Epic Rap Battle days, to releasing multiple groundbreaking albums that are constantly on repeat 🎵 Watching his sound develop over years of projects has been super cool and inspiring (￣▽￣)/♫•*¨*•.¸¸♪"
+      "fav_artist_desc": "My favourite artist is Watsky, having followed him from his Epic Rap Battle days, to releasing multiple groundbreaking albums that are constantly on repeat 🎵 Watching his sound develop over years of projects has been super cool and inspiring (￣▽￣)/♫•*¨*•.¸¸♪",
+      "id": "kaden"
     },
     {
       "name": "Aidan Gabert",
       "pronouns": "He/Him",
       "role": "1st AC",
       "image": "/team/Aidan.jpg",
-      "fav_artist": "Menehan Street Band, and/or The Budos Band"
+      "fav_artist": "Menehan Street Band, and/or The Budos Band",
+      "id": "aidan"
     },
     {
       "name": "FJ Tai",
@@ -59,28 +66,32 @@
       "role": "Camera Op",
       "image": "/team/FJ.jpg",
       "fav_artist": "The Korean Boy Band EXO",
-      "fav_artist_desc": "They’ve been one of my first Korean boy bands I listen to and I just love their music. I love listening to their music before a competition or while I am doing homework. They do Chinese covers of their songs."
+      "fav_artist_desc": "They’ve been one of my first Korean boy bands I listen to and I just love their music. I love listening to their music before a competition or while I am doing homework. They do Chinese covers of their songs.",
+      "id": "fj"
     },
     {
       "name": "Alan Haw",
       "pronouns": "He/Him",
       "role": "Gaffer",
+      "image": "/team/Alan.jpg",
       "fav_artist": "Borderline Fever",
-      "image": "/team/Alan.jpg"
+      "id": "alan"
     },
     {
       "name": "Veda Menghani",
       "pronouns": "She/Her",
       "role": "Grip",
+      "image": "/team/Veda.jpg",
       "fav_artist": "Borderline Fever",
-      "image": "/team/Veda.jpg"
+      "id": "veda"
     },
     {
       "name": "Abigail Mitchell",
       "pronouns": "She/They",
       "role": "Makeup",
       "image": "/team/Abby.jpg",
-      "fav_artist": "Sleep Token"
+      "fav_artist": "Sleep Token",
+      "id": "abigail"
     },
     {
       "name": "Milo Galley",
@@ -88,14 +99,16 @@
       "role": "Art Department",
       "image": "/team/Milo.jpg",
       "fav_artist": "Borderline Fever",
-      "fav_artist_desc": "I like too many musicians to pick a favourite, music is too complex to say one is better than all others"
+      "fav_artist_desc": "I like too many musicians to pick a favourite, music is too complex to say one is better than all others",
+      "id": "milo"
     },
     {
       "name": "Chiara Ruggiero",
       "pronouns": "She/Her",
       "role": "Production Assistant",
       "fav_artist": "Borderline Fever",
-      "image": "/team/Chiara.jpg"
+      "image": "/team/Chiara.jpg",
+      "id": "chiara"
     },
     {
       "name": "Ben Lilley",
@@ -103,7 +116,8 @@
       "role": "Assistant Editor",
       "image": "/team/Ben.jpg",
       "fav_artist": "Borderline Fever",
-      "fav_artist_desc": "I actually cant think of a good answer you can put Borderline Fever."
+      "fav_artist_desc": "I actually cant think of a good answer you can put Borderline Fever.",
+      "id": "ben"
     },
     {
       "name": "Alastair Grey",
@@ -111,14 +125,16 @@
       "role": "Post Sound Mixer",
       "image": "/team/Alastair.jpg",
       "fav_artist": "Bear McReary",
-      "fav_artist_desc": "He’s been a part of many musical scores that have an impact of the media I consume. His music still make me feel connected to the characters even with the songs on their own."
+      "fav_artist_desc": "He’s been a part of many musical scores that have an impact of the media I consume. His music still make me feel connected to the characters even with the songs on their own.",
+      "id": "alastair"
     },
     {
       "name": "Cameron Jaigobin",
       "pronouns": "He/Him",
       "role": "Transmedia",
       "fav_artist": "The Flaming Lips",
-      "image": "/team/Cameron.jpg"
+      "image": "/team/Cameron.jpg",
+      "id": "cameron"
     }
   ]
 }

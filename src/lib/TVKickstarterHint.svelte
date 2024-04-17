@@ -1,4 +1,6 @@
-<p>thanks for <a href="https://www.kickstarter.com/projects/interference-pattern/interference-pattern-a-borderline-fever-music-video?ref=project_build">kickstarting us</a>, everyone! 🎉</p>
+<p>thanks for <a
+	href="https://www.kickstarter.com/projects/interference-pattern/interference-pattern-a-borderline-fever-music-video?ref=project_build">kickstarting
+	us</a>, everyone! 🎉</p>
 
 <style>
     p {
@@ -11,5 +13,7 @@
         text-align: center;
     }
 
-    a { color: inherit; }
+    a {
+        color: inherit;
+    }
 </style>

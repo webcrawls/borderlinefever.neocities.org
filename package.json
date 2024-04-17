@@ -31,6 +31,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^3.0.1"
+		"@sveltejs/adapter-static": "^3.0.1",
+		"@xstate/svelte": "^3.0.2",
+		"xstate": "^5.10.0"
 	}
 }

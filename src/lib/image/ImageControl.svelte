@@ -1,43 +1,38 @@
 <script lang="ts">
-	export let entries: { name: string }[] = [];
-	export let changed: ((index: number) => void) | undefined = undefined;
-	export let index: number = 0;
+	import { goto } from '$app/navigation';
+	import { type Entry } from '$lib/image/ImageViewer.svelte';
 
-	const noop = () => true;
+	export let items: Entry[] = [];
+	export let index: number = 0
+	export let base: string = "/"
 
-	$: noop(index) && changed && changed(index);
+	const state = () => {
+		let next = index + 1
+		let prev = index - 1
 
-	const prev = () => {
-		index -= 1;
+		if (next > items.length - 1) next = 0
+		if (prev < 0) prev = items.length - 1
 
-		if (index < 0) {
-			index = entries.length - 1;
-		}
-		console.log({ prev, index });
-	};
+		return [items[next], items[prev]]
+	}
 
-	const next = () => {
-		index += 1;
-
-		if (index > entries.length - 1) {
-			index = 0;
-		}
-		console.log({ next, index });
-	};
+	let [ next, prev ] = state(index)
+	$: [ next, prev ] = state(index)
+	$: console.log({next, prev})
 </script>
 
-<div class="team-widget">
-	<button on:click={prev}>Previous</button>
-		<select bind:value={index}>
-			{#each entries as entry, index}
-				<option value="{index}">{entry.name}</option>
-			{/each}
-		</select>
-	<button on:click={next}>Next</button>
+<div class="tv-selector">
+	<a href="/{base}/{prev?.id}">Previous</a>
+	<select bind:value={index} on:select={(id) => goto(`/${base}/${id}`)}>
+		{#each items as entry, index}
+			<option value="{index}">{entry.name}</option>
+		{/each}
+	</select>
+	<a href="/{base}/{next?.id}">Next</a>
 </div>
 
 <style>
-    .team-widget {
+    .tv-selector {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -46,7 +41,7 @@
         height: 100%;
     }
 
-    button {
+    a {
         color: transparent;
         width: 30px;
         aspect-ratio: 1 / 1;
@@ -56,19 +51,19 @@
         cursor: pointer;
     }
 
-    button:first-of-type {
+    a:first-of-type {
         background-image: url("/button-left.png");
     }
 
-    button:last-of-type {
+    a:last-of-type {
         background-image: url("/button-right.png");
     }
 
-    button:first-of-type:hover {
+    a:first-of-type:hover {
         background-image: url("/button-left-hover.png");
     }
 
-    button:last-of-type:hover {
+    a:last-of-type:hover {
         background-image: url("/button-right-hover.png");
     }
 
@@ -85,14 +80,14 @@
         width: 100%;
         text-overflow: ellipsis;
         position: relative;
-				margin-inline: clamp(10px, 3vw, 1rem);
+        margin-inline: clamp(10px, 3vw, 1rem);
         font-size: clamp(12px, 3vw, 1rem);
     }
 
     select:hover {
         color: rgba(255, 255, 255, 0.95);
-				background-color: #282828;
-				border-radius: 3px;
+        background-color: #282828;
+        border-radius: 3px;
     }
 
     select option {

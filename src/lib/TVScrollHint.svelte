@@ -1,16 +1,16 @@
 <script lang="ts">
-    import {onMount} from "svelte";
+	import { onMount } from 'svelte';
 
-    export let scroller: HTMLElement
+	export let scroller: HTMLElement;
 
-    let show: boolean = true
+	let show: boolean = true;
 
-    onMount(() => {
-        scroller.addEventListener('scroll', (e) => {
-            console.log({e})
-            show = false
-        })
-    })
+	onMount(() => {
+		scroller.addEventListener('scroll', (e) => {
+			console.log({ e });
+			show = false;
+		});
+	});
 </script>
 
 <p class:hidden={!show}>scroll for more!</p>

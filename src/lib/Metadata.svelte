@@ -17,10 +17,17 @@
 		'/about': 'About the Film'
 	};
 
-	let route = routeTitles[$page.route.id];
-	$: route = routeTitles[$page.route.id];
+	const getRoute = (id, status) => {
+		let route = routeTitles[id] ?? '';
+		route = status === 200 ? route : 'Fell down the wrong hole?';
+		return route;
+	};
 
-	let pageTitle = `${title} - ${route}`
+	let route: string = getRoute($page.route.id, $page.status);
+	$: route = getRoute($page.route.id, $page.status)
+
+	let pageTitle = `${title} - ${route}`;
+	$: pageTitle = `${title} - ${route}`;
 </script>
 
 <svelte:head>
@@ -32,8 +39,8 @@
 	<meta name="language" content="{locale}" />
 	<meta name="author" content="Kaden Scott" />
 	<meta name="url" content="{url}" />
-	<link rel="canonical" href="{url}"/>
-	<link rel="me" type="text/html" href="https://github.com/webcrawls"/>
+	<link rel="canonical" href="{url}" />
+	<link rel="me" type="text/html" href="https://github.com/webcrawls" />
 
 
 	<!-- opengraph -->

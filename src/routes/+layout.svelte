@@ -1,73 +1,30 @@
 <script lang="ts">
 	import BackgroundVideo from '$lib/layout/BackgroundVideo.svelte';
-	import { page } from '$app/stores';
-	import { type Writable, writable } from 'svelte/store';
-	import { onMount, setContext, type SvelteComponent } from 'svelte';
 	import Metadata from '$lib/Metadata.svelte';
-	import { browser } from '$app/environment';
-
-	const prefersReducedQuery = browser ? window.matchMedia('(prefers-reduced-motion: reduce)') : undefined
-	const prefersReduced: Writable<boolean> = writable(prefersReducedQuery?.matches)
-	setContext("prefersReduced", prefersReduced)
-
-	let pageHasVideo: boolean = $page.url.pathname !== '/';
-	$: pageHasVideo = $page.url.pathname !== '/';
-	let uiToggle: boolean = true;
-	let playing: boolean = false;
-	$: playing = !$prefersReduced && pageHasVideo && uiToggle;
-
-	const control: Writable<SvelteComponent | undefined> = writable({ element: undefined, props: {} });
-	setContext('control', control);
-
-	const centerTv = () => {
-		const wrapper = document.querySelector('.main-wrapper main');
-		wrapper.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
-	};
-
-	onMount(() => {
-		new ResizeObserver(() => setTimeout(() => centerTv(), 10)).observe(document.body);
-		prefersReducedQuery?.addEventListener(() => $prefersReduced = prefersReducedQuery.matches)
-	});
+	import { prefersReducedMotion } from '$lib/stores/media';
+	import TVFrame from '$lib/tv/TVFrame.svelte';
 </script>
 
-<svelte:window on:load={centerTv} />
 <Metadata />
 
 <div id="app">
-	<BackgroundVideo {playing} />
+	<BackgroundVideo />
 	<header>
 		<div class="top">
 			<h1><a href="/">INTERFERENCE PATTERN</a></h1>
 		</div>
 		<div class="bottom">
 			<p>a Borderline Fever Music Video</p>
-			<button style="{!pageHasVideo && !$prefersReduced ? 'opacity: 0.0 !important;' : ''}"
-							on:click|preventDefault={() => uiToggle = !uiToggle}>
-				{uiToggle ? 'pause' : 'play'}
-			</button>
+<!--			<button style="{$prefersReducedMotion ? 'opacity: 0.0 !important;' : ''}"-->
+<!--							on:click|preventDefault={() => toggleState = !toggleState}>-->
+<!--				{toggleState ? 'pause' : 'play'}-->
+<!--			</button>-->
 		</div>
 	</header>
 	<div class="main-wrapper">
-		<main class="tv-frame">
-			<nav class="tv-nav">
-				<a href="/about">About</a>
-				<a href="/team">Team</a>
-				<a href="/stills">Stills</a>
-			</nav>
-			<aside class="tv-control">
-				{#if $control}
-					<svelte:component this="{$control.element}" {...$control.props}></svelte:component>
-				{:else}
-					<p>OMG WE GOT KICKSTARTED!!</p>
-				{/if}
-			</aside>
-			<section>
-				<div class="section-bg"></div>
-				<div class="content-wrapper">
-					<slot />
-				</div>
-			</section>
-		</main>
+		<TVFrame>
+			<slot />
+		</TVFrame>
 	</div>
 	<footer>
 		<div class="footer-container">
@@ -124,7 +81,9 @@
 					<img src="/logo/sheridan-logo.png" alt="The Sheridan college logo."
 							 style="filter: invert(94%) sepia(94%) saturate(0%) hue-rotate(241deg) brightness(106%) contrast(105%);" />
 				</a>
-				<img src="/logo/blf-logo.png" alt="The Borderline Fever logo." />
+				<a rel="external" href="https://borderlinefever.hearnow.com/">
+					<img src="/logo/blf-logo.png" alt="The Borderline Fever logo." />
+				</a>
 			</div>
 		</div>
 	</footer>
