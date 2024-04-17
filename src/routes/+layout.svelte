@@ -3,6 +3,7 @@
 	import Metadata from '$lib/Metadata.svelte';
 	import { prefersReducedMotion } from '$lib/stores/media';
 	import TVFrame from '$lib/tv/TVFrame.svelte';
+	import Notification from '$lib/Notification.svelte';
 </script>
 
 <Metadata />
@@ -22,6 +23,11 @@
 		</div>
 	</header>
 	<div class="main-wrapper">
+		<Notification>
+			<p>thanks for <a
+				href="https://www.kickstarter.com/projects/interference-pattern/interference-pattern-a-borderline-fever-music-video?ref=project_build">kickstarting
+				us</a>, everyone! 🎉</p>
+		</Notification>
 		<TVFrame>
 			<slot />
 		</TVFrame>
