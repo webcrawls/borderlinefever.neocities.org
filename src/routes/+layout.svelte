@@ -26,7 +26,7 @@
 
 	onMount(() => {
 		new ResizeObserver(() => setTimeout(() => centerTv(), 10)).observe(document.body);
-		prefersReducedQuery?.addEventListener(() => $prefersReduced = prefersReducedQuery.matches)
+		prefersReducedQuery?.addEventListener("change", () => {$prefersReduced = prefersReducedQuery.matches})
 	});
 </script>
 
@@ -112,11 +112,6 @@
 							<img alt="amazon"
 									 src="/icons/amazon.svg" /></a>
 					</nav>
-				</div>
-				<div class="section">
-					<p id="credits"><span class="madewith"><span class="made">made</span> with 💖 </span>by <a rel="external"
-																																																		href="https://webcrawls.live">webcrawls</a>
-					</p>
 				</div>
 			</div>
 			<div class="image-bin">
