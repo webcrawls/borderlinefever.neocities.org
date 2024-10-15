@@ -58,8 +58,8 @@ _If you are looking to build the full HTML-version of the website, follow these 
 3. Run `npm run build` to compile the website. The output will be in the `build/` folder, which you can upload the
    contents of to most web hosts.
 
-## Technical Details
+## Technical Details0
 
-### Landmarks
+### Caveats
 
-- [src/lib/Metadata.svelte](src/lib/Metadata.svelte) - meta/opengraph `<head>` tags
+- Unfortunately, clients running without JS cannot fully use the interactive image galleries.\
