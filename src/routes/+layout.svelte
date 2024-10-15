@@ -1,5 +1,4 @@
 <script lang="ts">
-	import BackgroundVideo from '$lib/layout/BackgroundVideo.svelte';
 	import { page } from '$app/stores';
 	import { type Writable, writable } from 'svelte/store';
 	import { onMount, setContext, type SvelteComponent } from 'svelte';
@@ -9,12 +8,6 @@
 	const prefersReducedQuery = browser ? window.matchMedia('(prefers-reduced-motion: reduce)') : undefined
 	const prefersReduced: Writable<boolean> = writable(prefersReducedQuery?.matches)
 	setContext("prefersReduced", prefersReduced)
-
-	let pageHasVideo: boolean = $page.url.pathname !== '/';
-	$: pageHasVideo = $page.url.pathname !== '/';
-	let uiToggle: boolean = true;
-	let playing: boolean = false;
-	$: playing = !$prefersReduced && pageHasVideo && uiToggle;
 
 	const control: Writable<SvelteComponent | undefined> = writable({ element: undefined, props: {} });
 	setContext('control', control);
@@ -34,17 +27,12 @@
 <Metadata />
 
 <div id="app">
-	<BackgroundVideo {playing} />
 	<header>
 		<div class="top">
 			<h1><a href="/">INTERFERENCE PATTERN</a></h1>
 		</div>
 		<div class="bottom">
 			<p>a Borderline Fever Music Video</p>
-			<button style="{!pageHasVideo && !$prefersReduced ? 'opacity: 0.0 !important;' : ''}"
-							on:click|preventDefault={() => uiToggle = !uiToggle}>
-				{uiToggle ? 'pause' : 'play'}
-			</button>
 		</div>
 	</header>
 	<div class="main-wrapper">
