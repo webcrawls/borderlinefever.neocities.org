@@ -58,8 +58,10 @@ _If you are looking to build the full HTML-version of the website, follow these 
 3. Run `npm run build` to compile the website. The output will be in the `build/` folder, which you can upload the
    contents of to most web hosts.
 
-## Technical Details0
+## Technical Details
+
+- The website is currently hosted via neocities.org. Contact Kaden if you need access to the borderlinefever account.
 
 ### Caveats
 
-- Unfortunately, clients running without JS cannot fully use the interactive image galleries.\
+- Unfortunately, clients running without JS cannot fully use the interactive image galleries.
