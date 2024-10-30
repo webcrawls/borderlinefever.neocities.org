@@ -60,6 +60,8 @@ _If you are looking to build the full HTML-version of the website, follow these 
 
 ## Technical Details
 
-### Landmarks
+- The website is currently hosted via neocities.org. Contact Kaden if you need access to the borderlinefever account.
 
-- [src/lib/Metadata.svelte](src/lib/Metadata.svelte) - meta/opengraph `<head>` tags
+### Caveats
+
+- Unfortunately, clients running without JS cannot fully use the interactive image galleries.
