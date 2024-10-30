@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>borderline.forever</title>
+    <link rel="stylesheet" href="./blf.css"/>
+    <style>
+        body {
+            justify-content: flex-start;
+        }
+
+        .member {
+            background-color: gray;
+            display: flex;
+            border: 2px black groove;
+            width: 100%;
+            gap: 0.5em;
+        }
+
+        .container {
+            max-width: 70ch;
+        }
+
+        img {
+            image-rendering: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="z-index: 1">
+    <img style="border: none; width:100%;" src="./logo2.png"/>
+    <div class="content">
+        <div class="content-text">
+            <p>International Dream-Surfrock wave Borderline Fever is a band made by a ragtag group of fellas that are
+                just
+                here to have a good time 🙂</p>
+            <p>From a small town area in Ontario, Canada. These 4 members have a knack for making great music and having
+                a
+                damn good time doing it. The band started in May of 2021.</p>
+            <p>With Drew on the drums, Julia on rhythm and
+                vocals, Darius on Main, and Tyler on bass; these four create a vibe that is unstoppable and unparalleled
+                by
+                even the greats.</p>
+            <p>Or maybe not idk just listen and find out for yourself dummy!!</p>
+        </div>
+    </div>
+    <div class="members">
+        <div id="julia" class="content content-bg">
+            <div class="content-title-left">
+                <h1 class="member-title title">Julia</h1>
+                <div class="image-container">
+                    <img class="image" src="./Julia.jpg"/>
+                </div>
+            </div>
+            <p>Where it all began. Front-runner and musician extraordinaire, Julia comes in swinging with riffs that
+                will rock your socks off and the voice of an angel. Julia never disappoints with her creativity and
+                knack for cooking up something good. Armed to the teeth with musical abilities, she would make rock
+                legends go into an early retirement.</p>
+        </div>
+        <div id="drew" class="content content-bg">
+            <div class="content-title-right">
+                <div class="image-container">
+                    <img class="image" src="./drew.jpg"/>
+                </div>
+                <h1 class="member-title title">Drew</h1>
+            </div>
+            <p>BLF's master percussionist, Drew lays down the rhythm for which the band builds its masterpieces atop of.
+                Drew takes advantage of his black-belt level drum training and his grueling practice regime (or whenever
+                he gets the chance) to make beats that blow the greats out of the water. He also likes to sew.</p>
+        </div>
+        <div id="darius" class="content content-bg">
+            <div class="content-title-left">
+                <h1 class="member-title title">Darius</h1>
+                <div class="image-container">
+                    <img class="image" src="./darius.jpg"/>
+                </div>
+            </div>
+            <p>big man; guitar legend; master on the strings. All terms that could be used to describe Blf's lead
+                guitarist if it was somebody else. After being invited to help forge the best musical group on this side
+                of the planet because he was goofy, Darius swore a sacred oath to do "just good enough to not get kicked
+                out". With the help of a guitar that costs about as much as Toronto rent, his angelic riffs would be
+                enough to turn anyone's ear in the direction of Borderline Fever.</p>
+        </div>
+        <div id="tyler" class="content content-bg">
+            <div class="content-title-right">
+                <div class="image-container">
+                    <img class="image" src="./tyler.jpg"/>
+                </div>
+                <h1 class="member-title title">Tyler</h1>
+            </div>
+            <p>The big man with a master plan. The title held by BLFs own bassist. After being asked to join the band,
+                Tyler had to set out on a journey to learn bass as he had never played. Did he learn? Who's to say!! But
+                if the stars align and the mood is right, if you listen really close; you still won't find the answer
+                !!</p>
+        </div>
+    </div>
+</div>
+<div class="bg-container" style="z-index:-1;position:fixed;;bottom:0;height:50%;width:100%;
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+">
+    <img class="flicker-image" style="filter: blur(10px) grayscale(50%) brightness(50%); border: none"
+         src="./julia-outline.png"/>
+    <img class="flicker-image" style="filter: blur(10px) grayscale(50%) brightness(50%); border: none"
+         src="./tyler-outline.png"/>
+    <img class="flicker-image" style="filter: blur(10px) grayscale(50%) brightness(50%); border: none"
+         src="./drew-outline.png"/>
+    <img class="flicker-image" style="filter: blur(10px) grayscale(50%) brightness(50%); border: none"
+         src="./darius-outline.png"/>
+</div>
+<script>
+    let offFilter = "blur(10px) grayscale(50%) brightness(50%)"
+    let onFilter = "blur(10px) grayscale(0%) brightness(70%)"
+
+    function on(element) {
+        element.style.filter = onFilter
+
+        setTimeout(() => {
+            off(element)
+        }, getRandomArbitrary(150, 500))
+    }
+
+    function off(element) {
+        element.style.filter = offFilter
+
+        setTimeout(() => {
+            on(element)
+        }, getRandomArbitrary(100, 5000))
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    for (let element of document.getElementsByClassName("flicker-image")) {
+        off(element)
+    }
+</script>
+
+<script>
+    let activations = {}
+
+    function createMember(id, colour) {
+        let element = document.getElementById(id)
+        let title = element.querySelector(".member-title")
+        activations[id] = false
+        element.addEventListener("mousedown", (e) => {
+            title.style.color = colour
+            activations[id] = true
+            checkMembers()
+        })
+
+    }
+
+    function checkMembers() {
+        let flipped = true
+        for (let value in activations) {
+            console.log(value + ": " + activations[value])
+            if (activations[value] === false) {
+                flipped = false
+                break
+            }
+        }
+
+        if (flipped) {
+            window.location.href = "./him.html"
+        }
+    }
+
+    createMember("drew", "#4fa2d6")
+    createMember("tyler", "#c54040")
+    createMember("julia", "#e6b44a")
+    createMember("darius", "#e64ac3")
+</script>
+</body>
+</html>
+
