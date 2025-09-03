@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
-
     import TVWrapperViewer from "$lib/TVWrapperViewer.svelte";
     import crewData from '$lib/data/team.json'
 

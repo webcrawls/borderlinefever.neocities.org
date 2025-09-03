@@ -40,20 +40,3 @@
         position: relative;
     }
 </style>
-
-<!--<style>-->
-<!--    blockquote {-->
-<!--        border-left: 2px solid white;-->
-<!--        margin-inline: 1rem;-->
-<!--        margin-block: 1rem;-->
-<!--        padding-left: 1rem;-->
-<!--        padding-block: 0.2rem;-->
-<!--        background-color: rgba(255, 255, 255, 0.3);-->
-<!--    }-->
-
-<!--    p {-->
-<!--        text-indent: 4rem;-->
-<!--        font-size: 16px;-->
-<!--        margin-block: 1rem;-->
-<!--    }-->
-<!--</style>-->
