@@ -1,14 +1,13 @@
 # borderlinefever.neocities.org
 
-A website initially designed for the Interference Pattern music video, a project between Borderline Fever and Sheridan
-college.
+A website for the band [Borderline Fever](https://borderlinefever.hearnow.com/), showcasing their Interference Pattern music video (releasing soon). Initially designed for a Sheridan College capstone project.
 
 > [Visit the website here](https://borderlinefever.neocities.org)!
 
 ![the Interference Pattern logo](/static/logo/logo-colour.png)
 ![the Sheridan logo](/static/logo/sheridan-logo.png)
 
-- [Setup and Local Development](#step-and-local-development)
+<!-- - [Setup and Local Development](#step-and-local-development)
   - [Install Dependencies](#)
   - [Clone Repository](#)
   - [Run and Build](#)
@@ -64,4 +63,4 @@ _If you are looking to build the full HTML-version of the website, follow these 
 
 ### Caveats
 
-- Unfortunately, clients running without JS cannot fully use the interactive image galleries.
+- Unfortunately, clients running without JS cannot fully use the interactive image galleries. -->
