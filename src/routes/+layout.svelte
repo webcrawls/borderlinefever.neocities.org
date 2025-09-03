@@ -1,15 +1,22 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { type Writable, writable } from 'svelte/store';
-	import { onMount, setContext, type SvelteComponent } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import Metadata from '$lib/Metadata.svelte';
 	import { browser } from '$app/environment';
+	import TvLoadingControl from '$lib/tv/TVLoadingControl.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	const prefersReducedQuery = browser ? window.matchMedia('(prefers-reduced-motion: reduce)') : undefined
 	const prefersReduced: Writable<boolean> = writable(prefersReducedQuery?.matches)
 	setContext("prefersReduced", prefersReduced)
 
-	const control: Writable<SvelteComponent | undefined> = writable({ element: undefined, props: {} });
+	const control = $state({ element: undefined, props: {}})
+	const ControlElement = $derived(control.element ?? TvLoadingControl)
+
 	setContext('control', control);
 
 	const centerTv = () => {
@@ -23,7 +30,7 @@
 	});
 </script>
 
-<svelte:window on:load={centerTv} />
+<svelte:window onload={centerTv} />
 <Metadata />
 
 <div id="app">
@@ -43,16 +50,12 @@
 				<a href="/stills">Stills</a>
 			</nav>
 			<aside class="tv-control">
-				{#if $control}
-					<svelte:component this="{$control.element}" {...$control.props}></svelte:component>
-				{:else}
-					<p>OMG WE GOT KICKSTARTED!!</p>
-				{/if}
+				<ControlElement {...control.props}></ControlElement>
 			</aside>
 			<section>
 				<div class="section-bg"></div>
 				<div class="content-wrapper">
-					<slot />
+					{@render children?.()}
 				</div>
 			</section>
 		</main>

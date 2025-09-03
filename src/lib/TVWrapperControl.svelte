@@ -1,11 +1,19 @@
 <script lang="ts">
-	export let entries: { name: string }[] = [];
-	export let changed: ((index: number) => void) | undefined = undefined;
-	export let index: number = 0;
+    import { run } from 'svelte/legacy';
+
+    interface Props {
+        entries?: { name: string }[];
+        changed?: ((index: number) => void) | undefined;
+        index?: number;
+    }
+
+    let { entries = [], changed = undefined, index = $bindable(0) }: Props = $props();
 
 	const noop = () => true;
 
-	$: noop(index) && changed && changed(index);
+	run(() => {
+        noop(index) && changed && changed(index);
+    });
 
 	const prev = () => {
 		index -= 1;
@@ -27,13 +35,13 @@
 </script>
 
 <div class="team-widget">
-	<button on:click={prev}>Previous</button>
+	<button onclick={prev}>Previous</button>
 		<select bind:value={index}>
 			{#each entries as entry, index}
 				<option value="{index}">{entry.name}</option>
 			{/each}
 		</select>
-	<button on:click={next}>Next</button>
+	<button onclick={next}>Next</button>
 </div>
 
 <style>

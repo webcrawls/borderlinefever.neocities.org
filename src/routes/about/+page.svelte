@@ -4,10 +4,11 @@
 
     const control = getContext("control")
 
-    let scroller = undefined
+    let scroller = $state(undefined)
 
     onMount(() => {
-        $control = { element: TVScrollHint, props: { scroller } }
+        control.element = TVScrollHint
+        control.props = { scoller }
     })
 </script>
 

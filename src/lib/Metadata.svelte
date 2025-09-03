@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { page } from '$app/stores';
 
 	const title = 'INTERFERENCE PATTERN';
@@ -17,8 +19,10 @@
 		'/about': 'About the Film'
 	};
 
-	let route = routeTitles[$page.route.id];
-	$: route = routeTitles[$page.route.id];
+	let route = $state(routeTitles[$page.route.id]);
+	run(() => {
+		route = routeTitles[$page.route.id];
+	});
 
 	let pageTitle = `${title} - ${route}`
 </script>

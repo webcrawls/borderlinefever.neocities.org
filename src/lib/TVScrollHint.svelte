@@ -1,9 +1,13 @@
 <script lang="ts">
     import {onMount} from "svelte";
 
-    export let scroller: HTMLElement
+    interface Props {
+        scroller: HTMLElement;
+    }
 
-    let show: boolean = true
+    let { scroller }: Props = $props();
+
+    let show: boolean = $state(true)
 
     onMount(() => {
         scroller.addEventListener('scroll', (e) => {

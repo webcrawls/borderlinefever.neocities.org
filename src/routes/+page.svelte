@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {writable, type Writable} from "svelte/store";
-    import {getContext, onMount, setContext} from "svelte";
-    import {page} from "$app/stores";
+    import { writable, type Writable } from "svelte/store";
+    import { getContext, onMount, setContext } from "svelte";
+    import { page } from "$app/stores"
     import TVKickstarterHint from "$lib/TVKickstarterHint.svelte";
 
     const hasAnchor: boolean = $page.url.hash !== ""
@@ -16,7 +16,8 @@
     const control = getContext("control")
 
     onMount(() => {
-        $control = { element: TVKickstarterHint, props: {} }
+        control.element = TVKickstarterHint
+        control.props = {}
     })
 </script>
 
