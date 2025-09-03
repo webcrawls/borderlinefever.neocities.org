@@ -21,18 +21,7 @@
 
 	let { baseTitle = '', metaTitle = '', entries = [] }: Props = $props();
 
-	let staticElement: HTMLElement = $state(undefined);
-	let imageElement: HTMLElement = $state(undefined);
-	let isFlicker: boolean = $state(false);
-
-	const flicker = () => {
-		if (!imageElement) return;
-		// crewImg.style.opacity = '0'
-		isFlicker = true;
-		// setTimeout(() => crewImg.style.opacity = '1', 150)
-		setTimeout(() => (isFlicker = false), 250);
-	};
-
+    let imageElement: HTMLElement = $state(undefined);
 	let index: number = $state(0);
 	let item: Entry = $state(entries[index]);
 	run(() => {
@@ -43,8 +32,7 @@
 
 	const control = getContext('control');
 	const prefersReduced = getContext('prefersReduced');
-	// $: index = crewData.crew.indexOf($currentTeam)
-	// $: $currentTeam && flicker()
+    const {flicker} = control
 
 	onMount(() => {
 		control.element = TVWrapperControl;
@@ -72,28 +60,20 @@
 </svelte:head>
 
 <section class="image-wrapper">
-	<img
-		aria-hidden="true"
-		bind:this={staticElement}
-		class="static-image"
-		class:hidden={!isFlicker}
-		alt="Animated TV static, used to emulate the feel of a classic CRT monitor."
-		src={'/static-crt.gif'}
-	/>
 	{#if item}
 		<img
 			bind:this={imageElement}
 			class:no-image={!item.image}
 			class="main-image"
 			alt="An image of {item.name}."
-			src={isFlicker ? '/invisible.png' : item.image}
+			src={item.image}
 		/>
-		<section class="text-container" class:offset={index % 2 !== 0} class:hidden={isFlicker}>
+		<section class="text-container" class:offset={index % 2 !== 0}>
 			<h1>{baseTitle ?? 'n/a'}</h1>
 			<p><b>{item.name ?? 'N/A'}</b></p>
 		</section>
 		{#if item.meta && item.meta.title}
-			<section class="text-container alt" class:offset={index % 2 !== 0} class:hidden={isFlicker}>
+			<section class="text-container alt" class:offset={index % 2 !== 0}>
 				<h1>{metaTitle ?? 'n/a'}</h1>
 				<p class="description-title"><b>{item.meta.title}</b></p>
 				{#if item.meta.description && showDescription}
@@ -117,8 +97,7 @@
 		left: 0;
 	}
 
-	.main-image,
-	.static-image {
+	.main-image {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -127,16 +106,6 @@
 
 	.main-image {
 		padding-block: 4%;
-	}
-
-	.static-image {
-		opacity: 0.9;
-		filter: contrast(0.5) blur(1px);
-		object-fit: cover;
-	}
-
-	.static-image.hidden {
-		visibility: hidden;
 	}
 
 	.text-container {
@@ -205,9 +174,5 @@
 
 	.text-container p {
 		font-size: clamp(14px, 3vw, 20px);
-	}
-
-	.hidden {
-		visibility: hidden;
 	}
 </style>

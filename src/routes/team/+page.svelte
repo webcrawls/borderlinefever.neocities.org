@@ -1,6 +1,8 @@
 <script lang="ts">
     import TVWrapperViewer from "$lib/TVWrapperViewer.svelte";
     import crewData from '$lib/data/team.json'
+	import { getContext } from "svelte";
+
 
     let entries: {
         name: string,

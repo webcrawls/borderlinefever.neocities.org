@@ -8,7 +8,7 @@
 
     onMount(() => {
         control.element = TVScrollHint
-        control.props = { scoller }
+        control.props = { scroller }
     })
 </script>
 
