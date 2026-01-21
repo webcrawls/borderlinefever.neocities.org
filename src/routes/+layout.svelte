@@ -52,6 +52,7 @@
 <Metadata />
 
 <div id="app">
+	<!-- hi -->
 	<header>
 		<div class="top">
 			<h1><a href="/">INTERFERENCE PATTERN</a></h1>
